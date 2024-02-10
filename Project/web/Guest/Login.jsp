@@ -18,19 +18,51 @@
            {
                 String email=request.getParameter("txtmail");
                 String password=request.getParameter("password");
-                
+                int sts=0;
                 String seluser = "select*from tbl_user where user_email= '"+email+"' and user_password ='"+password+"'";
                 String seladmin = "select*from tbl_admin where admin_email= '"+email+"' and admin_password ='"+password+"'";
                 String selagency = "select*from tbl_agency where agency_email= '"+email+"' and agency_password ='"+password+"'";
                 ResultSet rsU=con.selectCommand(seluser);
                 ResultSet rsA=con.selectCommand(seladmin);
-                ResultSet rsAg=con.selectCommand(selagency);
-                
+                ResultSet rsAg=con.selectCommand(selagency);  
                 if(rsU.next())
                 {
-                    session.setAttribute("uid",rsU.getString("user_id"));
-                    session.setAttribute("uname",rsU.getString("user_name"));
-                    response.sendRedirect("../User/HomePage.jsp");
+                    sts=rsU.getInt("user_status");
+                    if(sts == 0)//property table ill illa
+                    {
+                     %>
+                    <script>
+                        alert("Pending verification")
+                        window.Location="Property.jsp"
+                    </script>
+                    <%
+                    }
+                    else if(sts == 1)//property table ond but admin nokkittila
+                    {
+                     %>
+                    <script>
+                        alert("Pending verification")
+                        window.Location="Login.jsp"
+                    </script>
+                    <%
+                    }
+                    else if(sts == 3)//rejected
+                    {
+                     %>
+                    <script>
+                        alert("Rejected User")
+                        window.Location="Login.jsp"
+                    </script>
+                    <%   
+                    
+                  
+                    }
+                    else 
+                    {
+                      session.setAttribute("uid",rsU.getString("user_id"));
+                      session.setAttribute("uname",rsU.getString("user_name"));
+                      response.sendRedirect("../User/HomePage.jsp");
+                    }
                 }
                 else if(rsA.next())
                 {

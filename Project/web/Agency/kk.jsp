@@ -1,10 +1,112 @@
- <td><%=rs.getString("ward_no")%></td>
-                    <td><%=rs.getString("location_name")%></td>
+<%--
+    Document   : Login
+    Created on : 5 Jan, 2024, 4:04:25 PM
+    Author     : thoma
+--%>
+<jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <%@page import="java.sql.ResultSet"%>
+        <title>JSP Page</title>
+    </head>
+    <body>
+       <%
+           if(request.getParameter("btnsave")!=null)
+           {
+                String email=request.getParameter("txtmail");
+                String password=request.getParameter("password");
+                String sts="";
+                String seluser = "select*from tbl_user where user_email= '"+email+"' and user_password ='"+password+"'";
+                String seladmin = "select*from tbl_admin where admin_email= '"+email+"' and admin_password ='"+password+"'";
+                String selagency = "select*from tbl_agency where agency_email= '"+email+"' and agency_password ='"+password+"'";
+                ResultSet rsU=con.selectCommand(seluser);
+                ResultSet rsA=con.selectCommand(seladmin);
+                ResultSet rsAg=con.selectCommand(selagency);  
+                if(rsU.next())
+                { 
+                    sts=rsU.getString("user_status");
+                    if(sts == "0")//property table ill illa
+                    {
+                     %>
+                    <script>
+                        alert("Pending verification")
+                        window.Location="Property.jsp"
+                    </script>
+                    <%
+                    }
+                    else if(sts == "1")//property table ond but admin nokkittila
+                    {
+                     %>
+                    <script>
+                        alert("Pending verification")
+                        window.Location="Login.jsp"
+                    </script>
+                    <%
+                    }
+                    else if(sts == "3")//rejected
+                    {
+                     %>
+                    <script>
+                        alert("Rejected User")
+                        window.Location="Login.jsp"
+                    </script>
+                    <%   
                     
-                    
-                    
-                    <th>Ward No</th>
-                    <th>Location</th>
-                    
-                    
-                    inner join tbl_ward d on l.ward_id=d.ward_id inner join tbl_location e on d.location_id=e.location_id
+                  
+                    }
+                    else 
+                    {
+                      session.setAttribute("uid",rsU.getString("user_id"));
+                      session.setAttribute("uname",rsU.getString("user_name"));
+                      response.sendRedirect("../User/HomePage.jsp");
+                    }
+                }
+                else if(rsA.next())
+                {
+                    session.setAttribute("Aid",rsA.getString("admin_id"));
+                    session.setAttribute("Aname",rsA.getString("admin_name"));
+                    response.sendRedirect("../Admin/HomePage.jsp");  
+                }
+                else if(rsAg.next())
+                {
+                    session.setAttribute("Agid",rsAg.getString("agency_id"));
+                    session.setAttribute("Agname",rsAg.getString("agency_name"));
+                    response.sendRedirect("../Agency/HomePage.jsp");  
+                }
+                else
+                {
+                    %>
+                    <script>
+                        alert("invalid credentilas")
+                        window.Location="Login.jsp"//password thettiya same pg illot varan
+                    </script>
+                    <%
+                }
+                
+           }
+       
+       
+       
+       %>
+        <form method="POST">
+            <table border="3" align="center">
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="txtmail" placeholder="Enter the email address" required</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" placeholder="Enter password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" </td>
+                </tr>
+                 <tr>
+                    <td colspan="2" align="center">
+                      <input type="submit" value="Login" name="btnsave">  
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

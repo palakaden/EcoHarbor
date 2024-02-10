@@ -7,7 +7,7 @@
 # Server OS:                    Win32
 # Target compatibility:         ANSI SQL
 # HeidiSQL version:             4.0
-# Date/time:                    2024-02-01 15:36:20
+# Date/time:                    2024-02-10 11:45:35
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ANSI,NO_BACKSLASH_ESCAPES';*/
@@ -91,7 +91,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_location" (
   "location_id" int(50) NOT NULL auto_increment,
   "location_name" varchar(50) default NULL,
   PRIMARY KEY  ("location_id")
-) AUTO_INCREMENT=32;
+) AUTO_INCREMENT=33;
 
 
 
@@ -107,6 +107,8 @@ REPLACE INTO "tbl_location" ("location_id", "location_name") VALUES
 	(30,' vazhakulam');
 REPLACE INTO "tbl_location" ("location_id", "location_name") VALUES
 	(31,' Avoly');
+REPLACE INTO "tbl_location" ("location_id", "location_name") VALUES
+	(32,' thodu');
 /*!40000 ALTER TABLE "tbl_location" ENABLE KEYS;*/
 UNLOCK TABLES;
 
@@ -121,7 +123,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_property" (
   "ward_id" int(11) default NULL,
   "property_ownername" varchar(100) default NULL,
   PRIMARY KEY  ("property_id")
-) AUTO_INCREMENT=15;
+) AUTO_INCREMENT=17;
 
 
 
@@ -134,7 +136,9 @@ LOCK TABLES "tbl_property" WRITE;
 REPLACE INTO "tbl_property" ("property_id", "property_no", "ward_id", "property_ownername") VALUES
 	(13,'100',36,'Abirami');
 REPLACE INTO "tbl_property" ("property_id", "property_no", "ward_id", "property_ownername") VALUES
-	(14,'2',37,'Ashwin ');
+	(15,'22',37,'Liya');
+REPLACE INTO "tbl_property" ("property_id", "property_no", "ward_id", "property_ownername") VALUES
+	(16,'5',37,'Athulya');
 /*!40000 ALTER TABLE "tbl_property" ENABLE KEYS;*/
 UNLOCK TABLES;
 
@@ -151,7 +155,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_request" (
   "request_minimumamount" varchar(100) default '0',
   "actual_amount" varchar(100) default '0',
   PRIMARY KEY  ("request_id")
-) AUTO_INCREMENT=57;
+) AUTO_INCREMENT=58;
 
 
 
@@ -165,6 +169,8 @@ REPLACE INTO "tbl_request" ("request_id", "request_date", "user_id", "request_st
 	(55,'2024-02-01',33,'1','0','0');
 REPLACE INTO "tbl_request" ("request_id", "request_date", "user_id", "request_status", "request_minimumamount", "actual_amount") VALUES
 	(56,'2024-02-01',34,'1','0','0');
+REPLACE INTO "tbl_request" ("request_id", "request_date", "user_id", "request_status", "request_minimumamount", "actual_amount") VALUES
+	(57,'2024-02-02',35,'1','0','0');
 /*!40000 ALTER TABLE "tbl_request" ENABLE KEYS;*/
 UNLOCK TABLES;
 
@@ -180,7 +186,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_requesttype" (
   "request_id" int(10) default NULL,
   "requesttype_qty" varchar(100) default '0',
   PRIMARY KEY  ("requesttype_id")
-) AUTO_INCREMENT=58;
+) AUTO_INCREMENT=59;
 
 
 
@@ -196,8 +202,33 @@ REPLACE INTO "tbl_requesttype" ("requesttype_id", "requesttype_status", "wastety
 	(56,'0',16,55,'0');
 REPLACE INTO "tbl_requesttype" ("requesttype_id", "requesttype_status", "wastetype_id", "request_id", "requesttype_qty") VALUES
 	(57,'0',16,56,'0');
+REPLACE INTO "tbl_requesttype" ("requesttype_id", "requesttype_status", "wastetype_id", "request_id", "requesttype_qty") VALUES
+	(58,'0',9,57,'0');
 /*!40000 ALTER TABLE "tbl_requesttype" ENABLE KEYS;*/
 UNLOCK TABLES;
+
+
+#
+# Table structure for table 'tbl_transaction'
+#
+
+CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_transaction" (
+  "transaction_id" int(50) NOT NULL auto_increment,
+  "transaction_date" varchar(50) default NULL,
+  "transaction_type" varchar(100) default NULL,
+  "transaction_amount" varchar(100) default '0',
+  "user_id" int(11) unsigned default NULL,
+  PRIMARY KEY  ("transaction_id")
+);
+
+
+
+#
+# Dumping data for table 'tbl_transaction'
+#
+
+# No data found.
+
 
 
 #
@@ -217,8 +248,9 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_user" (
   "user_id" int(10) NOT NULL auto_increment,
   "user_adproof" varchar(100) default NULL,
   "user_status" varchar(50) default '0',
+  "user_wallet" varchar(100) default '0',
   PRIMARY KEY  ("user_id")
-) AUTO_INCREMENT=35;
+) AUTO_INCREMENT=39;
 
 
 
@@ -228,10 +260,14 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_user" (
 
 LOCK TABLES "tbl_user" WRITE;
 /*!40000 ALTER TABLE "tbl_user" DISABLE KEYS;*/
-REPLACE INTO "tbl_user" ("user_name", "user_contact", "user_email", "user_gender", "user_address", "ward_id", "user_photo", "user_propertyno", "user_password", "user_id", "user_adproof", "user_status") VALUES
-	('Abirami','7894561259','abirami@gmail.com','Female','perumbavoor',36,'UserPhoto_2079.png','100','Abcd@123',33,'Adproof_1143.png','2');
-REPLACE INTO "tbl_user" ("user_name", "user_contact", "user_email", "user_gender", "user_address", "ward_id", "user_photo", "user_propertyno", "user_password", "user_id", "user_adproof", "user_status") VALUES
-	('Ashwin ','7894561212','Ashwin@gmail.com','Male','ffdh',37,'UserPhoto_2009.png','2','Abcd@123',34,'Adproof_1320.png','2');
+REPLACE INTO "tbl_user" ("user_name", "user_contact", "user_email", "user_gender", "user_address", "ward_id", "user_photo", "user_propertyno", "user_password", "user_id", "user_adproof", "user_status", "user_wallet") VALUES
+	('Abirami','7894561259','abirami@gmail.com','Female','perumbavoor',36,'UserPhoto_2079.png','100','Abcd@123',33,'Adproof_1143.png','2','0');
+REPLACE INTO "tbl_user" ("user_name", "user_contact", "user_email", "user_gender", "user_address", "ward_id", "user_photo", "user_propertyno", "user_password", "user_id", "user_adproof", "user_status", "user_wallet") VALUES
+	('Liya','7894561212','Ashwin@gmail.com','Female','yfgfhg',37,'UserPhoto_1454.png','22','Abcd@123',35,'Adproof_1799.png','3','0');
+REPLACE INTO "tbl_user" ("user_name", "user_contact", "user_email", "user_gender", "user_address", "ward_id", "user_photo", "user_propertyno", "user_password", "user_id", "user_adproof", "user_status", "user_wallet") VALUES
+	('Athulya','7894561212','athulya@gmail.com','Female','thottyill',37,'UserPhoto_1965.png','5','Abcd@123',36,'Adproof_1627.png','1','0');
+REPLACE INTO "tbl_user" ("user_name", "user_contact", "user_email", "user_gender", "user_address", "ward_id", "user_photo", "user_propertyno", "user_password", "user_id", "user_adproof", "user_status", "user_wallet") VALUES
+	('Baskaran','7894561212','baskaran@gmail.com','Male','yfgfhg',38,'UserPhoto_1133.png','588','Abcd@123',38,'Adproof_2022.png','0','0');
 /*!40000 ALTER TABLE "tbl_user" ENABLE KEYS;*/
 UNLOCK TABLES;
 
@@ -274,7 +310,7 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_wastetype" (
   "wastetype_name" varchar(50) default NULL,
   "wastetype_rate" varchar(50) default NULL,
   PRIMARY KEY  ("wastetype_id")
-) AUTO_INCREMENT=18;
+) AUTO_INCREMENT=19;
 
 
 
@@ -290,6 +326,8 @@ REPLACE INTO "tbl_wastetype" ("wastetype_id", "wastetype_name", "wastetype_rate"
 	('16','Plastic','12');
 REPLACE INTO "tbl_wastetype" ("wastetype_id", "wastetype_name", "wastetype_rate") VALUES
 	('17','rubber','50');
+REPLACE INTO "tbl_wastetype" ("wastetype_id", "wastetype_name", "wastetype_rate") VALUES
+	('18','plastic','55');
 /*!40000 ALTER TABLE "tbl_wastetype" ENABLE KEYS;*/
 UNLOCK TABLES;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE;*/
