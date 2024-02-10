@@ -22,19 +22,19 @@
         if(rsU.next())
         {
              balance=rsU.getInt("user_wallet");
-             if(balance==0)
+             if(balance<=0)
              {
                  %>
-                 <script>
-                        alert("Payment Required")
-                        window.Location=".jsp"
-                 </script>
+                  <script>
+                    alert("Payment Required");
+                    window.location="Payment.jsp";
+                </script>
         
         <%
              }
         }
         %>
-        <h1><%=session.getAttribute("Uname")%></h1>
+      <h1><%=session.getAttribute("uname")%></h1>
         <a href="Myprofile.jsp">PROFILE</a><br>
         <a href="ChangePassword.jsp">CHANGE PASSWORD</a><br>
         <a href="EditProfile.jsp">Edit Profile</a><br>

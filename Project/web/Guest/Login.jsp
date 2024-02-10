@@ -32,8 +32,8 @@
                     {
                      %>
                     <script>
-                        alert("Pending verification")
-                        window.Location="Property.jsp"
+                        alert("Pending verification");
+                        window.location="Login.jsp";
                     </script>
                     <%
                     }
@@ -41,8 +41,8 @@
                     {
                      %>
                     <script>
-                        alert("Pending verification")
-                        window.Location="Login.jsp"
+                        alert("Pending verification");
+                        window.location="Login.jsp";
                     </script>
                     <%
                     }
@@ -50,8 +50,8 @@
                     {
                      %>
                     <script>
-                        alert("Rejected User")
-                        window.Location="Login.jsp"
+                        alert("Rejected User");
+                        window.location="Login.jsp";
                     </script>
                     <%   
                     
@@ -80,8 +80,8 @@
                 {
                     %>
                     <script>
-                        alert("invalid credentilas")
-                        window.Location="Login.jsp"//password thettiya same pg illot varan
+                        alert("invalid credentilas");
+                        window.location="Login.jsp";//password thettiya same pg illot varan
                     </script>
                     <%
                 }
