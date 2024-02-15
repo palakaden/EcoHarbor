@@ -37,7 +37,7 @@
                  String upq="update tbl_request set request_minimumamount = '"+samount+"' where user_id ='"+ session.getAttribute("uid") +"'";
                  con.executeCommand(upq);
                 out.println(samount);
-                //response.sendRedirect("UserRequest.jsp");
+                response.sendRedirect("UserRequest.jsp");
                     
                 
 
