@@ -15,6 +15,7 @@
     <body>
         <%
             String req = "";
+            int samount=0;
             String clr[] = request.getParameterValues("ddlwst");
             if (request.getParameter("txtsave") != null) {
                 String insqry = "insert into tbl_request(user_id,request_date)values('" + session.getAttribute("uid") + "',curdate())";
@@ -24,10 +25,21 @@
                 rs1.next();
                 req = rs1.getString("id");
                 for (int i = 0; i < clr.length; i++) {
+                    String s="select*from tbl_wastetype where wastetype_id='"+clr[i]+"'";
+                    ResultSet rs2 = con.selectCommand(s);
+                    rs2.next();
+                    int amount= rs2.getInt("wastetype_rate");
+                    samount=amount+samount;
                     String iq = "insert into tbl_requesttype(request_id,wastetype_id)values('" + req + "','" + clr[i] + "')";
                     con.executeCommand(iq);
+
                 }
-                response.sendRedirect("UserRequest.jsp");
+                 String upq="update tbl_request set request_minimumamount = '"+samount+"' where user_id ='"+ session.getAttribute("uid") +"'";
+                 con.executeCommand(upq);
+                out.println(samount);
+                //response.sendRedirect("UserRequest.jsp");
+                    
+                
 
             }
             if (request.getParameter("did") != null) {

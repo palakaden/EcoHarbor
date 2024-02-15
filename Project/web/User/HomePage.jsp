@@ -34,7 +34,8 @@
              }
         }
         %>
-      <h1><%=session.getAttribute("uname")%></h1>
+        <h1><%=session.getAttribute("uname")%></h1><br>
+        <h3> Balance:<%=rsU.getInt("user_wallet")%><br></h3>
         <a href="Myprofile.jsp">PROFILE</a><br>
         <a href="ChangePassword.jsp">CHANGE PASSWORD</a><br>
         <a href="EditProfile.jsp">Edit Profile</a><br>
