@@ -1,9 +1,8 @@
 <%-- 
-    Document   : Payment
-    Created on : 10 Feb, 2024, 11:05:20 AM
+    Document   : Payment1
+    Created on : 22 Feb, 2024, 10:47:40 AM
     Author     : thoma
 --%>
-
 <!DOCTYPE html>
 
 <%@page import="java.sql.ResultSet"%>
@@ -191,7 +190,7 @@
                     </div>	
                     <div class="input-group">
                         <div class="input-box">
-                            <input class="name" type="number" name="txt_amount" min="500" value="500" id="txtemail" placeholder="Amount" required="required">
+                            <input class="name" type="number" name="txt_amount" min="500" value="<%=Integer.parseInt(request.getParameter("reqamt"))%>" id="txtemail" placeholder="Amount" required="required">
                             <i class="fa fa-envelope icon" aria-hidden="true"></i>
                         </div>
                     </div>	
@@ -249,20 +248,11 @@
             </div>
 
         <%
-
+            String sts="";
             if (request.getParameter("btn_pay") != null) {
-                int cAmount = 0;
-                int amount = Integer.parseInt(request.getParameter("txt_amount"));
-                String sel1 = "select*from tbl_user where user_id='" + session.getAttribute("uid") + "'";
-                ResultSet rsu = con.selectCommand(sel1);
-                if (rsu.next()) {
-                    cAmount = rsu.getInt("user_wallet");
-                }
-                
-                int balAmount = amount + cAmount;
-
-                String upQry = "update tbl_user set user_wallet='" + balAmount + "' where user_id='" + session.getAttribute("uid") + "'";
-                if (con.executeCommand(upQry)) {
+                sts = "1";
+                String upQry = "update tbl_request set user_status='" + sts + "' where request_id='" +"'"+request.getParameter("reqid")+"'";
+                 con.executeCommand(upQry);
         %>
         <script type="text/javascript" >
             alert("Payment Completed");
@@ -272,7 +262,7 @@
         </script>
         <%
                 }
-            }
+            
 
         %>
     </body>

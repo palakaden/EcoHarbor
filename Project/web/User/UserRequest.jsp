@@ -36,8 +36,7 @@
                 }
                  String upq="update tbl_request set request_minimumamount = '"+samount+"' where user_id ='"+ session.getAttribute("uid") +"'";
                  con.executeCommand(upq);
-                out.println(samount);
-                response.sendRedirect("UserRequest.jsp");
+                 response.sendRedirect("Payment1.jsp?reqid=" + req +"&reqamt="+samount);
                     
                 
 
@@ -91,6 +90,7 @@
                         <input type="reset" name="txtcancel" value="Cancel">
                     </td>
                 </tr>
+               
             </table>
             <br>
             <table border="2" align="center">
@@ -117,6 +117,7 @@
                 </tr>
                 <%
                     }
+                    
                 %>
             </table>
         </form>
