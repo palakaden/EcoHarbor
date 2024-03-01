@@ -56,7 +56,7 @@
                 <td>
                    Name
                 </td>
-                <td><input type="text" name="txtloc" value="<%=editname%>" placeholder="Enter location name" required>
+                <td><input type="text" name="txtloc" value="<%=editname%>" placeholder="Enter location name" title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$" required>
                         <input type="hidden" name="txtid" value="<%=editid%>">
                 </td>
             </tr>

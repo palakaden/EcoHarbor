@@ -42,9 +42,30 @@
                     <td><%=rs.getString("request_id")%></td>
                     <td><%=rs.getString("request_date")%></td>
                     <td><%=rs.getString("user_propertyno")%></td>
+                    <td>
+                        
+                        <%
+                        String in =  "select*from tbl_requesttype l inner join tbl_wastetype t on l.wastetype_id = t.wastetype_id where request_id ='" + rs.getString("request_id") + "'";
+                        ResultSet rs2 = con.selectCommand(in);
+                        StringBuilder wn=new StringBuilder();// object that will be used to concatenate the "wastetype_name" values into a single string.
+                        
+                        while(rs2.next())
+                        {
+                            if(wn.length()>0)//first execution ill kerilla
+                            {
+                                wn.append(", ");
+                            }
+                        
+                        wn.append(rs2.getString("wastetype_name"));
+                        }
+                        %>
+                        <%=wn%><!--calling above object-->
                     
-          
+                     </td>
+                     <td><a href="Collection.jsp?cid=<%=rs.getString("request_id")%>">Collect</a><br></td>
+                </tr>
               <%
+                          
                 }
               %>
             </table>

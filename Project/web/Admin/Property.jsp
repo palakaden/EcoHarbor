@@ -76,7 +76,7 @@
                 </tr>
                 <tr>
                     <td>Ownername</td>
-                    <td><input type="text" name="txtname" value="<%=editname%>"></td>
+                    <td><input type="text" name="txtname" value="<%=editname%>" title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$" required></td>
                      <input type="hidden" name = "txtid" >
                 </tr>
                 <tr>

@@ -3,15 +3,18 @@
     Created on : 5 Jan, 2024, 4:04:25 PM
     Author     : thoma
 --%>
+
 <jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="Assets/Form.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <%@page import="java.sql.ResultSet"%>
         <title>JSP Page</title>
     </head>
+    <%@include file="Head.jsp" %>
     <body>
        <%
            if(request.getParameter("btnsave")!=null)
@@ -109,4 +112,5 @@
             </table>
         </form>
     </body>
+     <%@include file="Foot.jsp" %>
 </html>

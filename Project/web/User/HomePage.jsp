@@ -40,5 +40,6 @@
         <a href="ChangePassword.jsp">CHANGE PASSWORD</a><br>
         <a href="EditProfile.jsp">Edit Profile</a><br>
         <a href="UserRequest.jsp">Request</a><br>
+        <a href="Requestview.jsp">Requestview</a><br>
     </body>
 </html>

@@ -190,7 +190,7 @@
                     </div>	
                     <div class="input-group">
                         <div class="input-box">
-                            <input class="name" type="number" name="txt_amount" min="500" value="<%=Integer.parseInt(request.getParameter("reqamt"))%>" id="txtemail" placeholder="Amount" required="required">
+                            <input class="name" type="number" name="txt_amount" min="10" value="<%=Integer.parseInt(request.getParameter("reqamt"))%>" id="txtemail" placeholder="Amount" required="required">
                             <i class="fa fa-envelope icon" aria-hidden="true"></i>
                         </div>
                     </div>	

@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/EcoHarbor/Project/web/User/UserRequest.jsp</file>
-            <file>file:/D:/EcoHarbor/Project/web/Admin/ChangePassword.jsp</file>
+            <file>file:/D:/EcoHarbor/Project/web/Assets/Templates/Main/css/style.css</file>
+            <file>file:/D:/EcoHarbor/Project/web/Agency/Collection.jsp</file>
+            <file>file:/D:/EcoHarbor/Project/web/Guest/Head.jsp</file>
+            <file>file:/D:/EcoHarbor/Project/web/Guest/Foot.jsp</file>
             <file>file:/D:/EcoHarbor/Project/web/Guest/Login.jsp</file>
-            <file>file:/D:/EcoHarbor/Project/web/User/Payment.jsp</file>
-            <file>file:/D:/EcoHarbor/Project/web/Agency/AssignRequest.jsp</file>
+            <file>file:/D:/EcoHarbor/Project/web/Admin/UserRequestVerification.jsp</file>
+            <file>file:/D:/EcoHarbor/Project/web/index.html</file>
         </group>
     </open-files>
 </project-private>
