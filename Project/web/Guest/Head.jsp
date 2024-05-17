@@ -46,7 +46,7 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">EcoHarbor</a></h1>
+        <h1><a href="../index.html" class="scrollto">EcoHarbor</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
@@ -67,10 +67,4 @@
       <!--==========================
     Intro Section
   ============================-->
-  <section id="intro">
-    <div class="intro-container">
-        <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active" style="background-image: url('../Assets/Templates/Main/img/intro-carousel/11.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-           
+  

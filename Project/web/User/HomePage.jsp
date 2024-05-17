@@ -13,6 +13,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+      
+
     </head>
     <body>
         <%
@@ -36,10 +38,13 @@
         %>
         <h1><%=session.getAttribute("uname")%></h1><br>
         <h3> Balance:<%=rsU.getInt("user_wallet")%><br></h3>
-        <a href="Myprofile.jsp">PROFILE</a><br>
+        <a href="../User/Myprofile.jsp">PROFILE</a><br>
         <a href="ChangePassword.jsp">CHANGE PASSWORD</a><br>
-        <a href="EditProfile.jsp">Edit Profile</a><br>
-        <a href="UserRequest.jsp">Request</a><br>
-        <a href="Requestview.jsp">Requestview</a><br>
+        <a href="EditProfile.jsp">EDIT PROFILE</a><br>
+        <a href="UserRequest.jsp">REQUEST</a><br>
+        <a href="Requestview.jsp">REQUEST VIEW</a><br>
+        <a href="Transaction.jsp">TRANSACTIONS HISTROY</a><br>
+        <a href="UserFeedback.jsp">FEEDBACK</a><br>    
+        <a href="UserComplaint.jsp">COMPLAINT</a><br>    
     </body>
 </html>

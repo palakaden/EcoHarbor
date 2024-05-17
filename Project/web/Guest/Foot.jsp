@@ -6,7 +6,7 @@
     </div>
   </section><!-- #intro -->
 
-<!--==========================
+<!--==========================<br>
     Footer
   ============================-->
   <footer id="footer">
@@ -19,14 +19,14 @@
             <p>EcoHarbor pioneers sustainable waste management solutions tailored for coastal communities, combining advanced technology and community engagement for a cleaner, greener future. Join us in shaping a sustainable tomorrow.</p>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links" style="margin-left: 100px">
+         <div class="col-lg-3 col-md-6 footer-links" style="margin-left: 100px">
             <h4>Useful Links</h4>
             <ul>
               <li><i class="ion-ios-arrow-right"></i> <a href="#intro">Home</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#about">About us</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#services">Services</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#call-to-action">Call to action</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#facts">Facts</a></li>
             </ul>
           </div>
 
@@ -44,8 +44,6 @@
               <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
               <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
               <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
             </div>
 
           </div>

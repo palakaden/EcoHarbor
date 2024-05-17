@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AssignRequest
-    Created on : 27 Oct, 2023, 10:57:17 PM
+    Document   : ComplaintReply
+    Created on : 17 May, 2024, 10:58:07 AM
     Author     : thoma
 --%>
 <jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td><%=ress.getString("user_name")%></td>
-                <td align="center"><%=ress.getString("user_propno")%></td>
+                <td align="center"><%=ress.getString("user_propertyno")%></td>
                 <td><%=ress.getString("complaint_date")%></td>
                 <td><%=ress.getString("complaint_content")%></td>
             </tr>
@@ -58,6 +58,34 @@
                 }
             %>
             </table>
-         
+            <%
+            if(request.getParameter("btn_submit")!=null)
+            {
+                String uq = "update tbl_complaint set complaint_reply='"+request.getParameter("reply_content")+"' where complaint_id = '"+request.getParameter("cid")+"'";
+                if(con.executeCommand(uq)){ %>
+                <script type="text/javascript" >
+                    alert("Complaint Submitted");
+                    setTimeout(function() {
+                    window.location.href = 'HomePage.jsp'
+                    }, 1000);
+                </script>
+            <%
+                                           }
+            }   
+            %>
+        <form method="post" >
+        <table border="1" align="center">
+        <tr>
+        <td>Complaint Reply</td>
+        <td>
+        <textarea name="reply_content" rows="6" cols="20"></textarea>
+        </td>
+        </tr>
+        <tr>
+        <td colspan="2" align="center"><input type="submit" name="btn_submit" value="Register">&nbsp&nbsp<input type="reset" name="btn_reset" value="Reset"</td>
+        </tr>
+        </table>
+        </form>
     </body>
 </html>
+        

@@ -14,33 +14,6 @@
     </head>
     <body>
         <%
-            String req = "";
-            int samount=0;
-            String clr[] = request.getParameterValues("ddlwst");
-            if (request.getParameter("txtsave") != null) {
-                String insqry = "insert into tbl_request(user_id,request_date)values('" + session.getAttribute("uid") + "',curdate())";
-                con.executeCommand(insqry);
-                String sel = "select max(request_id) as id from tbl_request";
-                ResultSet rs1 = con.selectCommand(sel);
-                rs1.next();
-                req = rs1.getString("id");
-                for (int i = 0; i < clr.length; i++) {
-                    String s="select*from tbl_wastetype where wastetype_id='"+clr[i]+"'";
-                    ResultSet rs2 = con.selectCommand(s);
-                    rs2.next();
-                    int amount= rs2.getInt("wastetype_rate");
-                    samount=amount+samount;
-                    String iq = "insert into tbl_requesttype(request_id,wastetype_id)values('" + req + "','" + clr[i] + "')";
-                    con.executeCommand(iq);
-
-                }
-                 String upq="update tbl_request set request_minimumamount = '"+samount+"' where user_id ='"+ session.getAttribute("uid") +"'";
-                 con.executeCommand(upq);
-                 response.sendRedirect("Payment1.jsp?reqid=" + req +"&reqamt="+samount);
-                    
-                
-
-            }
             if (request.getParameter("did") != null) {
                 int count = 0;
                 String rqstid = request.getParameter("rid");//request id is placed into a variable
@@ -70,7 +43,7 @@
                 <tr>
                     <td>WasteType</td>
                     <td>
-                        <select name="ddlwst" multiple>
+                        <select name="ddlwst" multiple id="ddlwst">
                             <%                                String selq = "select*from tbl_wastetype";
                                 ResultSet rs = con.selectCommand(selq);
 
@@ -86,11 +59,10 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" name="txtsave" value="Submit">
+                        <button type="button" id="add">Submit</button>
                         <input type="reset" name="txtcancel" value="Cancel">
                     </td>
                 </tr>
-               
             </table>
             <br>
             <table border="2" align="center">
@@ -100,7 +72,7 @@
                     <td>Request Date</td>
                     <td>Action</td>
                 </tr>
-                <%                                
+                <%  
                     String in = "select*from tbl_request w inner join tbl_requesttype l on l.request_id=w.request_id inner join tbl_wastetype t on l.wastetype_id = t.wastetype_id where user_id ='" + session.getAttribute("uid") + "'";
                     ResultSet rs2 = con.selectCommand(in);
                     int i = 0;
@@ -117,9 +89,38 @@
                 </tr>
                 <%
                     }
-                    
+
                 %>
             </table>
         </form>
     </body>
+    <script src="../Assets/JQuery/jQuery.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {//event
+        const ddlwst = document.getElementById('ddlwst');
+        const logButton = document.getElementById('add');//button id add ile value logbutton ill vechu
+        logButton.addEventListener('click', function() {//calling the event
+            if(confirm("Confirm Your Payment"))
+            {    
+            const selectedValues = Array.from(ddlwst.selectedOptions).map(option => option.value);//drop down select chytha values oke array akki store chythu 
+            console.log('Selected values:', selectedValues); 
+            $.ajax({url: "../Assets/AjaxPages/AjaxUr.jsp",
+             type: "GET",
+             data: {
+                    ids: selectedValues// Pass the array here
+            },
+            traditional: true, // This ensures the array is serialized correctly
+            dataType: "html",
+            success: function(result) { 
+                alert(result)
+                window.location="UserRequest.jsp"
+            }
+            })
+            }
+            else{
+                alert("Request Cancelled")
+            }
+        });
+    });
+        </script>
 </html>

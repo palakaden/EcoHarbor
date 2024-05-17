@@ -14,7 +14,10 @@
     <body>
        <h1><%=session.getAttribute("Agname")%></h1>
        <a href="Myprofile.jsp">PROFILE</a><br>
-       <a href="EditProfile.jsp">Edit Profile</a><br>
-       <a href="ChangePassword.jsp">CHANGE PASSWORD</a>
+       <a href="EditProfile.jsp">EDIT PROFILE</a><br>
+       <a href="ChangePassword.jsp">CHANGE PASSWORD</a><br>
+       <a href="UserRequestDetails.jsp">COLLECTION DETAILS</a><br>
+       <a href="AgencyFeedback.jsp">FEEDBACK</a><br>
+       <a href="AgencyComplaint.jsp">COMPLAINT</a><br>
     </body>
 </html>

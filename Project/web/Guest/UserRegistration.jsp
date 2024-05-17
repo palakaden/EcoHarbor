@@ -10,9 +10,11 @@
     <jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
     <%@page import="java.sql.ResultSet" %>
     <head>
+         <link rel="stylesheet" type="text/css" href="Assets/Style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>User Registration</title>
     </head>
+     <%@include file="Head.jsp" %>
     <body>
         <form method="post" enctype="multipart/form-data" action="../Assets/ActionPages/UserUploadAction.jsp">
             <table border="3" align="center">
@@ -113,7 +115,8 @@
                 </tr>
             </table>
         </form>
-    </body>
+    </body><br><br><br><br><br><br><br><br><br>
+    <%@include file="Foot.jsp" %>
     <script src="../Assets/JQuery/jQuery.js"></script> <!--The jQuery (Javascript Library) file in the specified directory is being processed here-->         
     <script>
                             function getWard(wid) /*Here the function is being defined were parameter is being passed*/

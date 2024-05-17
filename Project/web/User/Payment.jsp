@@ -263,6 +263,10 @@
 
                 String upQry = "update tbl_user set user_wallet='" + balAmount + "' where user_id='" + session.getAttribute("uid") + "'";
                 if (con.executeCommand(upQry)) {
+                    
+                String insqry = "insert into tbl_transaction (transaction_date, transaction_type, transaction_amount, user_id) values ( curdate(), '" + "Wallet Amount" + "', " + amount + ", '" + session.getAttribute("uid") + "')";
+                con.executeCommand(insqry);  
+                
         %>
         <script type="text/javascript" >
             alert("Payment Completed");

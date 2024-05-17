@@ -61,7 +61,33 @@
                         <%=wn%><!--calling above object-->
                     
                      </td>
-                     <td></td>
+                     <td>
+                     <%
+                     int sts=rs.getInt("request_status");
+                     if(sts == 0)
+                     {
+                         out.println("Pending Request");
+                     }
+                     else if(sts ==1 )
+                     {
+                         out.println("Request Accepted");
+                     }
+                     else if(sts ==2 )
+                     {
+                         out.println("Request Rejected");
+                     }
+                     else if(sts ==3 )
+                     {
+                         out.println("Collected");
+                     }
+                     else
+                     {
+                         out.println("Collection Pending");                    
+                     }
+                     
+                     
+                     %>
+                     </td>
                 </tr>
               <%
                           

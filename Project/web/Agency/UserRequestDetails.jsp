@@ -28,7 +28,7 @@
                     <th>Wastetype</th>
                     <th>Action</th>
                      <%
-                    String insqry = "select*from tbl_request w inner join tbl_user l on w.user_id=l.user_id";
+                    String insqry = "select*from tbl_request w inner join tbl_user l on w.user_id=l.user_id where request_status ='" +1+ "'or request_status ='" +4+ "'";
                     ResultSet rs = con.selectCommand(insqry);
                     int i = 0;
                     while (rs.next()) {

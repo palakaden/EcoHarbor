@@ -21,12 +21,12 @@
         <%
           if(request.getParameter("aid")!=null)
           {
-              String uq = "update tbl_request set request_status ='1' where user_id = '"+request.getParameter("aid")+"'";
+              String uq = "update tbl_request set request_status ='1' where request_id = '"+request.getParameter("aid")+"'";
               con.executeCommand(uq);
           }
           if(request.getParameter("rid")!=null)
           {
-              String uq1 = "update tbl_request set request_status = '2' where user_id = '"+request.getParameter("rid")+"'";
+              String uq1 = "update tbl_request set request_status = '2' where request_id = '"+request.getParameter("rid")+"'";
               con.executeCommand(uq1);
           }
         %>        
@@ -51,7 +51,7 @@
                 <td><%=i%></td>
                 <td><%=rs.getString("user_id")%></td>
                 <td><%=rs.getString("request_date")%></td>
-                <td><a href = "UserRequestVerification.jsp?aid=<%=rs.getString("user_id")%>">Accept</a>|<a href = "UserRequestVerification.jsp?rid=<%=rs.getString("user_id")%>">Reject</a></td>
+                <td><a href = "UserRequestVerification.jsp?aid=<%=rs.getString("request_id")%>">Accept</a>|<a href = "UserRequestVerification.jsp?rid=<%=rs.getString("request_id")%>">Reject</a></td>
                 <td>
                     <%
                     if(rs.getString("request_status").equals("0"))

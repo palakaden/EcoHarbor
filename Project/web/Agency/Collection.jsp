@@ -15,6 +15,7 @@
     <%
 
         if (request.getParameter("txtsave") != null) {
+            
             String sqz = "select*from tbl_request r inner join tbl_user u on r.user_id = u.user_id where r.request_id ='" + request.getParameter("cid") + "'";
             ResultSet rsz = con.selectCommand(sqz);
             while (rsz.next()) {
@@ -25,12 +26,30 @@
                     con.executeCommand(updString);
                 }
             }
-            String upString = "update tbl_request set actual_amount='" + request.getParameter("resultText") + "' where request_id='" + request.getParameter("cid") + "'";
+            String upString = "update tbl_request set actual_amount='" + request.getParameter("resultText") + "',request_status ='"+3+"' where request_id='" + request.getParameter("cid") + "'";
             if (con.executeCommand(upString)) {
                 response.sendRedirect("UserRequestDetails.jsp");
             }
+            
+            String sz = "select*from tbl_request r inner join tbl_user u on r.user_id = u.user_id where r.request_id ='" + request.getParameter("cid") + "'";
+            ResultSet rz = con.selectCommand(sz);
+            rz.next();
+            int wamount = rz.getInt("user_wallet");
+            int aamount = rz.getInt("actual_amount");
+            wamount = wamount - aamount;//reducing the amount from wallet after collection
+            String up = "update tbl_user set user_wallet = '" + wamount + "' where user_id = '" + rz.getString("user_id") + "'";
+            con.executeCommand(up);
+            String insqry = "insert into tbl_transaction (transaction_date, transaction_type, transaction_amount, user_id) values ( curdate(), '" + "Actual amount" + "', " + aamount + ", '" +rz.getString("user_id") + "')";
+            con.executeCommand(insqry);  
+            
         }
-
+        else
+        {
+            String upstrg="update tbl_request set request_status ='"+4+"'where request_id='" + request.getParameter("cid") + "'";//updated cllection status  to 4,when the collection is pending
+            con.executeCommand(upstrg);
+        }
+     
+     
     %>
     <body>
         <table border="1" align="center">         
