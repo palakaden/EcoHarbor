@@ -1,100 +1,178 @@
-<%--
-    Document   : Login
-    Created on : 5 Jan, 2024, 4:04:25 PM
-    Author     : thoma
---%>
-
-<jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
+<%@page  import = "java.sql.ResultSet"%>
 <!DOCTYPE html>
 <html>
     <head>
-      
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@page import="java.sql.ResultSet"%>
-        <title>JSP Page</title>
-    </head>
-    <%@include file="Head.jsp" %>
-    <section id="intro">
-    <div class="intro-container">
-        <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active" style="background-image: url('../Assets/Templates/Main/img/intro-carousel/11.jpg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-               
+        <!-- Favicons -->
+        <link href="../Assets/Templates/Main/img/favicon.jpg" rel="icon">
+        <link href="../Assets/Templates/Main/img/apple-touch-icon.jpg" rel="apple-touch-icon">
 
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
+        <!-- Bootstrap CSS File -->
+        <link href="../Assets/Templates/Main/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link href="../Assets/Templates/Main/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="../Assets/Templates/Main/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="../Assets/Templates/Main/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+        <link href="../Assets/Templates/Main/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="../Assets/Templates/Main/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        <!-- Main Stylesheet File -->
+        <link href="../Assets/Templates/Main/css/style.css" rel="stylesheet">
+
+        <link href="../Assets/Templates/Form.css" rel="stylesheet">
+        <link rel="stylesheet" href="../Assets/CSS/shopreg.css">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Transaction History</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Assets/Templates/Main/img/facts-bg.jpg') no-repeat center center/cover;
+                font-family: Arial, sans-serif;
+                color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .table-container {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 100px;
+                margin-bottom: 125px;
+                min-height: 60vh;
+            }
+
+            .table-wrapper {
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0 auto;
+            }
+
+            table {
+                width: 100%;
+                margin: 0 auto;
+                border-collapse: collapse;
+                background-color: rgba(249, 249, 249, 0.1);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                color: white;
+                border: 1px solid transparent; /* Makes the outer border transparent */
+            }
+
+            th, td {
+                padding: 12px;
+                border: 1px solid transparent; /* Makes individual cell borders transparent */
+                text-align: center;
+            }
+
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            tr:nth-child(even) {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            tr:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+            h2 {
+                text-align: center;
+                font-weight: 400;
+                font-size: 33px;
+                line-height: 34px;
+                margin-top: 150px;
+            }
+
+            .extra-info-wrapper {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .extra-info {
+                text-align: center;
+                font-size: 16px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .marquee-container {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            marquee {
+                width: 100%;
+                display: block;
+                color: white;
+            }
+        </style>
+    </head> 
     <body>
-        <%
-            if (request.getParameter("btnsave") != null) {
-                String email = request.getParameter("txtmail");
-                String password = request.getParameter("password");
-                int sts = 0;
-                String seluser = "select*from tbl_user where user_email= '" + email + "' and user_password ='" + password + "'";
-                String seladmin = "select*from tbl_admin where admin_email= '" + email + "' and admin_password ='" + password + "'";
-                String selagency = "select*from tbl_agency where agency_email= '" + email + "' and agency_password ='" + password + "'";
-                ResultSet rsU = con.selectCommand(seluser);
-                ResultSet rsA = con.selectCommand(seladmin);
-                ResultSet rsAg = con.selectCommand(selagency);
-                if (rsU.next()) {
-                    sts = rsU.getInt("user_status");
-                    if (sts == 0)//property table ill illa
-                    {
-        %>
-        <script>
-            alert("Pending verification");
-            window.location = "Login.jsp";
-        </script>
-        <%
-        } else if (sts == 1)//property table ond but admin nokkittila
-        {
-        %>
-        <script>
-            alert("Pending verification");
-            window.location = "Login.jsp";
-        </script>
-        <%
-        } else if (sts == 3)//rejected
-        {
-        %>
-        <script>
-            alert("Rejected User");
-            window.location = "Login.jsp";
-        </script>
-        <%
-            } else {
-                session.setAttribute("uid", rsU.getString("user_id"));
-                session.setAttribute("uname", rsU.getString("user_name"));
-                response.sendRedirect("../User/HomePage.jsp");
-            }
-        } else if (rsA.next()) {
-            session.setAttribute("Aid", rsA.getString("admin_id"));
-            session.setAttribute("Aname", rsA.getString("admin_name"));
-            response.sendRedirect("../Admin/HomePage.jsp");
-        } else if (rsAg.next()) {
-            session.setAttribute("Agid", rsAg.getString("agency_id"));
-            session.setAttribute("Agname", rsAg.getString("agency_name"));
-            response.sendRedirect("../Agency/HomePage.jsp");
-        } else {
-        %>
-        <script>
-            alert("invalid credentilas");
-            window.location = "Login.jsp";//password thettiya same pg illot varan
-        </script>
-        <%
-                }
-
-            }
-
-
-        %>
-        <form method="POST">
-            <label align="left" style="color: white; font-size: 58px; font-family: serif ">LOGIN</label><br>
-            <input class="inputbox" type="email" name="txtmail" placeholder="Enter the email address" required ><br>
-            <input type="password" name="password" placeholder="Enter password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="width: 300px; height: 40px "><br>
-           <input type="submit" value="Login" name="btnsave" style="width: 100px; height: 40px; padding: 10px 20px; background-color: limegreen; color: white;"> <br>
-            <label  style="color: white; font-size: 15px; ">not a member?<a href="../Guest/ag.jsp" style="color: limegreen;">Sign up</a></label><br>
-        </form>
+        <header id="header" >
+            <div class="container-fluid">
+                <div id="logo" class="pull-left">
+                    <h1><a href="../index.html" class="scrollto">EcoHarbor</a></h1>
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li class="menu-active"><a href="HomePage.jsp">Home</a></li>
+                        <li><a href="#contacts">Contact</a></li>
+                        <li><a href="../index.html">Logout</a></li>
+                    </ul>
+                </nav><!-- #nav-menu-container -->
+            </div>
+        </header><!-- #header -->  
+        <h2>WASTE TYPE MINIMUM RATE </h2>
+        <div class="table-container">
+            <div class="table-wrapper">
+                <table border="1" align="center">         
+                    <tr>
+                        <th>SI.No</th>
+                        <th>Waste Types</th>
+                        <th>Rate</th>
+                    </tr>
+                    <tr>
+                        <%
+                            String sq = "select*from tbl_wastetype ";
+                            ResultSet rs = con.selectCommand(sq);
+                            int i = 0;
+                            while (rs.next()) {
+                                i++;
+                        %>       
+                        <td><%=i%></td>
+                        <td><%=rs.getString("wastetype_name")%></td>
+                        <td>
+                            <%=rs.getString("wastetype_rate")%>
+                        </td>
+                    </tr>
+                    <%
+                        }
+                    %>                   
+                </table>
+                <div class="marquee-container">
+                    <marquee behavior="scroll" direction="left">
+                        In this system, the extra amount is calculated when the total waste is 2 kg or more. When the total waste exceeds 2 kg, the extra amount is determined by multiplying the total quantity by 10% of the amount of waste.
+                    </marquee>
+                </div>
+            </div>
+        </div>
+        <%@include file="../Guest/Foot.jsp" %>
     </body>
-    <%@include file="Foot.jsp" %>
 </html>

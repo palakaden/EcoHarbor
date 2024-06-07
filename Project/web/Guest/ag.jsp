@@ -1,123 +1,198 @@
-
+<%-- 
+    Document   : Edit Profile
+    Created on : Jan 5, 2024, 4:15:39 PM
+    Author     : frank
+--%>
 <jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
-<%@page import="java.sql.ResultSet" %>
+<%@page  import = "java.sql.ResultSet"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+  <!-- Favicons -->
+  <link href="../Assets/Templates/Main/img/favicon.jpg" rel="icon">
+  <link href="../Assets/Templates/Main/img/apple-touch-icon.jpg" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="../Assets/Templates/Main/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="../Assets/Templates/Main/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../Assets/Templates/Main/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="../Assets/Templates/Main/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="../Assets/Templates/Main/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../Assets/Templates/Main/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="../Assets/Templates/Main/css/style.css" rel="stylesheet">
+
+  <link href="../Assets/Templates/Form.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Assets/CSS/shopreg.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title> User Registration Form</title>
-    <link rel="stylesheet" href="../Assets/UserRegistration.css" />
+    <title>Edit Profile</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Assets/Templates/Main/img/facts-bg.jpg') no-repeat center center/cover;
+        }
+        .choose-file-button, .formbold-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .choose-file-button:hover, .formbold-btn:hover {
+            background-color: #45a049;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .formbold-form-wrapper {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: rgba(249, 249, 249, 0.1);
+            margin-top: 100px;
+        }
+        .gender-radio {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .gender-radio input[type="radio"] {
+            display: none;
+        }
+        .gender-radio input[type="radio"] + label {
+            background-color: #e7e7e7;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .gender-radio input[type="radio"]:checked + label {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .formbold-checkbox-wrapper input[type="checkbox"]:checked + .formbold-checkbox-inner {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .formbold-form-title h2 {
+            font-weight: 400;
+            font-size: 33px;
+            line-height: 34px;
+            color: #fff;
+        }    
+        .formbold-form-label {
+            color: white;
+            font-size: 16px;
+            line-height: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .formbold-form-input, select, textarea {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            border-radius: 4px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        .formbold-form-input::placeholder, select option, textarea::placeholder {
+            color: white;
+        }
+        span{
+            color:white;
+        }
+    </style>
   </head>
-      <section id="intro">
-    <div class="intro-container">
-        <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active" style="background-image: url('../Assets/Templates/Main/img/intro-carousel/15.jpeg');">
-            <div class="carousel-container">
-              <div class="carousel-content">
-  <%@include file="Head.jsp" %>
-  <body>
-  <form method="POST" class="form" enctype="multipart/form-data" action="../Assets/ActionPages/UserUploadAction.jsp">    
-    <section class="container1">
-      <header>User Registration</header>
-        <div class="input-box">
-          <label>Full Name</label>
-          <input type="text" name="txtname" placeholder="Enter full name" title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$" required />
-        </div>
-        <div class="input-box">
-            <label>Phone Number</label>
-            <input type="number" placeholder="Enter phone number" name="txtcontact" title="Phone number with 7-9 and remaing 9 digit with 0-9" pattern="[7-9]{1}[0-9]{9}" required />
-        </div>
-        <div class="input-box">
-          <label>Email Address</label>
-          <input type="text" name="txtemail" placeholder="Enter email address" required />
-        </div>  
-      <div class="input-box"><label>Gender</label></div>
-        <div class="gender-box">
-          <div class="gender-option">
-            <div class="gender">
-              <input type="radio" id="check-male" name="gender" value="Male" checked required/>
-              <label for="check-male">male</label>
-            </div>
-            <div class="gender">
-              <input type="radio" id="check-female" name="gender" value="Female"/>
-              <label for="check-female">Female</label>
-            </div>
-            <div class="gender">
-              <input type="radio" id="check-other" name="gender" value="Others"/>
-              <label for="check-other">Others</label>
-            </div>
-          </div>
-        </div>
-      <div class="column">
-        <div class="input-box file-input">
-            <label for="file1">Profile Photo : </label>
-            <input type="file" id="file1" name="file_photo" style="display: none;" required>
-            <button type="button" onclick="document.getElementById('file1').click()">Choose File</button>
-        </div>
-        <div class="input-box file-input">
-            <label for="file2">Aadhaar Proof : </label>
-            <input type="file" id="file2" name="file_proof" style="display: none;" required>
-            <button type="button" onclick="document.getElementById('file2').click()">Choose File</button>
-        </div>
+    <body>
+  <header id="header" >
+    <div class="container-fluid">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="../index.html" class="scrollto">EcoHarbor</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
       </div>
-      <div class="input-box"><label>Address</label></div>
-           <div class="input-box">
-            <input type="number" placeholder="Enter Property No" name="txtpropno" required />
-          </div> 
-          <div class="input-box">
-            <div class="select-box">
-                <select name="ddlLoc" onchange = "getWard(this.value)" required> <!--Here onchange triggers the function getWard()-->
-                            <option hidden>Select Location</option>
-                            <%
-                                String sel = "select*from tbl_location";  /*Here data from table location is fecthed*/
 
-                                ResultSet rs = con.selectCommand(sel); /*Here there select query is exectued into ResultSet array*/
-
-                                while (rs.next()) /*Using while loop we iterate every values in the array and pass the value into Drop down list*/ {
-                            %>
-                            <option value="<%=rs.getString("location_id")%>"><%=rs.getString("location_name")%></option> <!--Values from -->
-                            <%
-                                }
-                            %>
-                </select>
-            </div>   
-            <div class="select-box">
-              <select name="ddlWard" id = "selward" required>
-                <option hidden>Ward No</option>
-              </select>
-            </div>
-          </div>    
-        <div class="input-box address">
-          <textarea name="address" placeholder="Enter street address" required></textarea>
-        </div>   
-        <div class="input-box">
-            <input type="password" placeholder="Password" name="txtpsswd" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+            <li class="menu-active"><a href="HomePage.jsp">Home</a></li>
+          <li><a href="#contacts">Contact</a></li>
+          <li><a href="../index.html">Logout</a></li>
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->        
+        <%
+            if(request.getParameter("save")!=null)
+            {
+                    String uq = "update tbl_user set user_name = '"+request.getParameter("txttitle")+"',user_contact = '"+request.getParameter("txtcontact")+"',user_email = '"+request.getParameter("txtemail")+"',user_address = '"+request.getParameter("txtaddress")+"'where user_id = '"+session.getAttribute("uid")+"'";
+                    con.executeCommand(uq);
+                    response.sendRedirect("MyProfile.jsp");    
+            } 
+            String editname="";
+            String editcontact="";
+            String editemail="";
+            String editaddress="";
+            String sq2 = "select*from tbl_user where user_id ='"+session.getAttribute("uid")+"'";
+            ResultSet rs2 = con.selectCommand(sq2);
+            rs2.next();
+            editname = rs2.getString("user_name");
+            editcontact = rs2.getString("user_contact");
+            editemail = rs2.getString("user_email");
+            editaddress = rs2.getString("user_address");
+                        
+        %>
+      <div class="formbold-main-wrapper">
+      <div class="formbold-form-wrapper">
+        <form method="post">
+          <div class="formbold-form-title">
+              <h2 align="center">EDIT PROFILE</h2>
           </div> 
-          <div class="input-box">
-            <input type="password" placeholder="Confirm Password" name="txtcpsswd" required/>
+         <div class="formbold-mb-3">
+            <label class="formbold-form-label">Full Name</label>
+            <input type="text" value="<%=editname%>" class="formbold-form-input" name="txttitle" placeholder="Enter full name" title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$" required />
+          </div>   
+          <div class="formbold-mb-3">
+            <label class="formbold-form-label">Phone Number</label>
+            <input type="number" value="<%=editcontact%>" class="formbold-form-input" placeholder="Enter phone number" name="txtcontact" title="Phone number with 7-9 and remaining 9 digits with 0-9" pattern="[7-9]{1}[0-9]{9}" required />
           </div>
-        <button name="btn_save">Submit</button>
-        <input type="reset" value="Cancel" name="txtcancel" style="width: 100px; height: 32px; padding: 1px 20px; margin-right: 125px">
-        <label  style="color: white; font-size: 15px; "><a href="../Guest/waaste.jsp" style="color: limegreen;">Sign up as Agent?</a></label><br>
-    </section>
-  </form>
-  </body>
-  <script src="../Assets/JQuery/jQuery.js"></script> <!--The jQuery (Javascript Library) file in the specified directory is being processed here-->         
-  <script>
-                            function getWard(wid) /*Here the function is being defined were parameter is being passed*/
-                            {
-
-                                //  alert(wid);  
-                                $.ajax({url: "../Assets/AjaxPages/AjaxWard.jsp?wid=" + wid, /*Here we use the $.ajax for passing the parameter value into the ajaxward file*/
-                                    success: function(result) { /*If the function is invoked successfully*/
-                                        $("#selward").html(result); /*We pass the value into the Ward drop down list using its drop down list id*/
-                                    }
-                                })
-                            }
-
-    </script>
- <!-- <%@include file="Foot.jsp" %>-->
-  
+          <div class="formbold-mb-3">
+            <label class="formbold-form-label">Email Address</label>
+            <input type="text" value="<%=editemail%>" class="formbold-form-input" name="txtemail" placeholder="Enter email address" required />
+          </div>
+          <div class="formbold-mb-3">
+            <label class="formbold-form-label">Address</label>
+          </div>  
+          <div class="formbold-mb-3">
+            <textarea name="txtaddress" placeholder="Enter street address" class="formbold-form-input" required><%=editaddress%></textarea>
+          </div> 
+              <div class="button-container">   
+            <input type="submit" class="formbold-btn" name="txtupdate" value="Update">
+          </div>
+        </form> 
+        </div>
+        </div>
+        <%@include file="../Guest/Foot.jsp" %>
+    </body>
 </html>

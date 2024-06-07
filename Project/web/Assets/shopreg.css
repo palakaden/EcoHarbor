@@ -1,122 +1,233 @@
-/* Import Google font - Poppins */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 3, 2024, 5:58:38 PM
+    Author     : ANANTHU
+*/
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: url("../img/shop-reg.jpg");
+    background-size: 100% 100%;
+    background-size: cover;
+  background-position: center center;
+      //background-repeat: no-repeat;
+      //background-position: center center;
+    
+  }
+  .formbold-mb-3 {
+    margin-bottom: 15px;
+  }
+  .formbold-relative {
+    position: relative;
+  }
+  .formbold-opacity-0 {
+    opacity: 0;
+  }
+  .formbold-stroke-current {
+    stroke: currentColor;
+  }
+  #supportCheckbox:checked ~ div span {
+    opacity: 1;
+  }
 
-.container1 {
-    margin-top: 400px;
-    max-width: 600px;
-    width: 105%;
-    background: #fff;
-    padding: 8px;
-    border-radius: 6px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-}
+  .formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+  }
 
-.container1 header {
-  font-size: 1rem; /* Further reduced font size */
-  color: #333;
+  .formbold-form-wrapper {
+    margin: 0 auto;
+    max-width: 570px;
+    width: 100%;
+    //background: white;
+    padding: 40px;
+    background: rgba(255,255,255,0.50);
+  }
+
+  .formbold-img {
+    margin-bottom: 45px;
+  }
+
+  .formbold-form-title {
+    margin-bottom: 30px;
+  }
+  .formbold-form-title h2 {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    color: #07074d;
+  }
+  .formbold-form-title p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+    margin-top: 12px;
+  }
+
+  .formbold-input-flex {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+  }
+  .formbold-input-flex > div {
+    width: 50%;
+  }
+  .formbold-form-input {
+    text-align: left;
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+  }
+  .formbold-form-inputs {
+    text-align: left;
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 4px solid #dde3ec;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+  }
+   .formbold-form-inputs:focus {
+    border-color: #6a64f1;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+   }
+  .formbold-form-input:focus {
+    border-color: lime;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+  .formbold-form-label {
+    color: #000000;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .formbold-checkbox-label {
+    display: flex;
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+  }
+  .formbold-checkbox-label a {
+    margin-left: 5px;
+    color: #6a64f1;
+  }
+  .formbold-input-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .formbold-checkbox-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    margin-top: 2px;
+    border: 0.7px solid #dde3ec;
+    border-radius: 3px;
+  }
+
+  .formbold-btn {
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 14px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #6a64f1;
+    color: white;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+  .formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+  .gender-details .gender-title{
+  font-size: 20px;
   font-weight: 500;
-  text-align: center;
-  margin-bottom: 6px; /* Further reduced margin */
+ }
+  .category{
+   display: flex;
+   width: 80%;
+   margin: 14px 0 ;
+   justify-content: space-between;
+ }
+ .category label{
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+ }
+ .category label .dot{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
 }
+ #dot-1:checked ~ .category label .one,
+ #dot-2:checked ~ .category label .two,
+ #dot-3:checked ~ .category label .three{
+   background: #9b59b6;
+   border-color: #d9d9d9;
+ }
+       .choose-file-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
 
-.container1 .form {
-  margin-top: 8px; /* Further reduced margin */
+      .choose-file-button:hover {
+        background-color: #45a049;
+      }
+ input[type="radio"]{
+   display: none;
+   
+  .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+  color: #00FFF6;
 }
-
-.input-box {
-  width: 100%;
-  margin-top: 6px; /* Further reduced margin */
-}
-
-.input-box label {
-  color: #333;
-  display: -webkit-inline-box;
-  margin-bottom: 2px; /* Further reduced margin */
-}
-
-.input-box input,
-.input-box select,
-.input-box textarea {
-  height: 28px; /* Further reduced height */
-  width: 100%;
-  outline: none;
-  font-size: 0.8rem; /* Further reduced font size */
-  color: #707070;
-  margin-top: 2px; /* Further reduced margin */
-  border: 1px solid #ddd;
-  border-radius: 4px; /* Reduced border radius */
-  padding: 0 8px; /* Further reduced padding */
-}
-
-.input-box textarea {
-  height: 70px; /* Further reduced height for textarea */
-  resize: vertical; /* Allow vertical resizing */
-}
-
-.input-box input:focus,
-.input-box select:focus,
-.input-box textarea:focus {
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-}
-
-.form .column {
-  display: flex;
-  column-gap: 15px;
-}
-
-.form .gender-box {
-  margin-top: 8px; /* Reduced margin */
-}
-
-.form :where(.gender-option, .gender) {
-  display: flex;
-  column-gap: 20px; /* Further reduced column gap */
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: baseline;
-}
-
-.form .gender {
-  column-gap: 1px; /* Further reduced column gap */
-}
-
-.gender input,
-.gender label {
-  color: #333;
-  cursor: pointer;
-}
-
-.form button {
-  height: 32px; /* Further reduced height */
-  color: #fff;
-  font-size: 0.8rem; /* Further reduced font size */
-  margin-top: 12px; /* Reduced margin */
-  padding: 5px 10px; /* Further reduced padding */
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  background: #18d26e;
-  border: none;
-}
-
-.form button:hover {
-  background: rgb(88, 56, 250);
-}
-
-/* Responsive */
-@media screen and (max-width: 500px) {
-  .form .column {
-    flex-wrap: wrap;
-  }
-
-  .form :where(.gender-option, .gender) {
-    row-gap: 6px; /* Further reduced row gap */
-  }
 }

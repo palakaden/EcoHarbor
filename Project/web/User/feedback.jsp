@@ -16,7 +16,7 @@
             <table border="3" align="center">
                 <tr>
                     <td>Content</td>
-                    <td><textarea name="textcontent"  rowa="20" cols="20" placeholder="Enter content"></textarea></td>
+                    <td><textarea name="textcontent"  rowa="20" cols="20" placeholder="Enter content" required></textarea></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">

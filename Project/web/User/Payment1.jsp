@@ -177,23 +177,7 @@
                             <input class="name" type="text" name="txtname" id="txtname" placeholder="Full Name" required="required">
                             <i class="fa fa-user icon" aria-hidden="true"></i>
                         </div>
-                        <div class="input-box">
-                            <input class="name" type="text" name="txtnname" id="txtnname" placeholder="Nick Name" required="required">
-                            <i class="fa fa-user icon" aria-hidden="true"></i>
-                        </div>
                     </div>
-                    <div class="input-group">
-                        <div class="input-box">
-                            <input class="name" type="email" name="txtemail" id="txtemail" placeholder="Email Address" required="required">
-                            <i class="fa fa-envelope icon" aria-hidden="true"></i>
-                        </div>
-                    </div>	
-                    <div class="input-group">
-                        <div class="input-box">
-                            <input class="name" type="number" name="txt_amount" min="10" value="<%=Integer.parseInt(request.getParameter("reqamt"))%>" id="txtemail" placeholder="Amount" required="required">
-                            <i class="fa fa-envelope icon" aria-hidden="true"></i>
-                        </div>
-                    </div>	
                     <div class="input-group">
                         <div class="input-box">
                             <h4>Date of Birth</h4>

@@ -2,12 +2,12 @@
 #
 # --------------------------------------------------------
 # Host:                         127.0.0.1
-# Database:                     db_ecoharbor
+# Database:                     information_schema
 # Server version:               5.0.51b-community-nt
 # Server OS:                    Win32
 # Target compatibility:         ANSI SQL
 # HeidiSQL version:             4.0
-# Date/time:                    2024-02-10 11:45:35
+# Date/time:                    2024-06-07 08:26:20
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ANSI,NO_BACKSLASH_ESCAPES';*/
@@ -15,216 +15,29 @@
 
 
 #
-# Database structure for database 'db_ecoharbor'
+# Database structure for database 'information_schema'
 #
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ "db_ecoharbor" /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ "information_schema" /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE "db_ecoharbor";
-
-
-#
-# Table structure for table 'tbl_admin'
-#
-
-CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_admin" (
-  "admin_id" int(100) NOT NULL auto_increment,
-  "admin_name" varchar(100) default NULL,
-  "admin_email" varchar(100) default NULL,
-  "admin_password" varchar(100) default NULL,
-  PRIMARY KEY  ("admin_id")
-) AUTO_INCREMENT=15;
-
+USE "information_schema";
 
 
 #
-# Dumping data for table 'tbl_admin'
+# Table structure for table 'CHARACTER_SETS'
 #
 
-LOCK TABLES "tbl_admin" WRITE;
-/*!40000 ALTER TABLE "tbl_admin" DISABLE KEYS;*/
-REPLACE INTO "tbl_admin" ("admin_id", "admin_name", "admin_email", "admin_password") VALUES
-	(13,'Frankiln','franklin@gmail.com','Abcd@123');
-REPLACE INTO "tbl_admin" ("admin_id", "admin_name", "admin_email", "admin_password") VALUES
-	(14,'Ananthu','ananthu@gmail.com','Abcd@123');
-/*!40000 ALTER TABLE "tbl_admin" ENABLE KEYS;*/
-UNLOCK TABLES;
-
-
-#
-# Table structure for table 'tbl_agency'
-#
-
-CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_agency" (
-  "agency_name" varchar(100) default NULL,
-  "agency_logo" varchar(100) default NULL,
-  "agency_contact" varchar(100) default NULL,
-  "agency_email" varchar(100) default NULL,
-  "agency_proof" varchar(100) default NULL,
-  "agency_address" varchar(100) default NULL,
-  "agency_password" varchar(100) default NULL,
-  "agency_id" int(11) NOT NULL auto_increment,
-  PRIMARY KEY  ("agency_id")
-) AUTO_INCREMENT=11;
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `CHARACTER_SETS` (
+  `CHARACTER_SET_NAME` varchar(64) NOT NULL default '',
+  `DEFAULT_COLLATE_NAME` varchar(64) NOT NULL default '',
+  `DESCRIPTION` varchar(60) NOT NULL default '',
+  `MAXLEN` bigint(3) NOT NULL default '0'
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 
 
 #
-# Dumping data for table 'tbl_agency'
-#
-
-LOCK TABLES "tbl_agency" WRITE;
-/*!40000 ALTER TABLE "tbl_agency" DISABLE KEYS;*/
-REPLACE INTO "tbl_agency" ("agency_name", "agency_logo", "agency_contact", "agency_email", "agency_proof", "agency_address", "agency_password", "agency_id") VALUES
-	('Dani','AgencyLogo_1590.jpg','7894561212','dani@gmail.com','AgencyProof_1619.jpg','aaaaa','Abcd@1234',7);
-REPLACE INTO "tbl_agency" ("agency_name", "agency_logo", "agency_contact", "agency_email", "agency_proof", "agency_address", "agency_password", "agency_id") VALUES
-	('Ajay','AgencyLogo_1148.jpg','7894561212','ajay@gmail.com','AgencyProof_1631.jpg','aaavoly','Abcd@123',10);
-/*!40000 ALTER TABLE "tbl_agency" ENABLE KEYS;*/
-UNLOCK TABLES;
-
-
-#
-# Table structure for table 'tbl_location'
-#
-
-CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_location" (
-  "location_id" int(50) NOT NULL auto_increment,
-  "location_name" varchar(50) default NULL,
-  PRIMARY KEY  ("location_id")
-) AUTO_INCREMENT=33;
-
-
-
-#
-# Dumping data for table 'tbl_location'
-#
-
-LOCK TABLES "tbl_location" WRITE;
-/*!40000 ALTER TABLE "tbl_location" DISABLE KEYS;*/
-REPLACE INTO "tbl_location" ("location_id", "location_name") VALUES
-	(29,' Muvattupuzha');
-REPLACE INTO "tbl_location" ("location_id", "location_name") VALUES
-	(30,' vazhakulam');
-REPLACE INTO "tbl_location" ("location_id", "location_name") VALUES
-	(31,' Avoly');
-REPLACE INTO "tbl_location" ("location_id", "location_name") VALUES
-	(32,' thodu');
-/*!40000 ALTER TABLE "tbl_location" ENABLE KEYS;*/
-UNLOCK TABLES;
-
-
-#
-# Table structure for table 'tbl_property'
-#
-
-CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_property" (
-  "property_id" int(11) NOT NULL auto_increment,
-  "property_no" varchar(100) default NULL,
-  "ward_id" int(11) default NULL,
-  "property_ownername" varchar(100) default NULL,
-  PRIMARY KEY  ("property_id")
-) AUTO_INCREMENT=17;
-
-
-
-#
-# Dumping data for table 'tbl_property'
-#
-
-LOCK TABLES "tbl_property" WRITE;
-/*!40000 ALTER TABLE "tbl_property" DISABLE KEYS;*/
-REPLACE INTO "tbl_property" ("property_id", "property_no", "ward_id", "property_ownername") VALUES
-	(13,'100',36,'Abirami');
-REPLACE INTO "tbl_property" ("property_id", "property_no", "ward_id", "property_ownername") VALUES
-	(15,'22',37,'Liya');
-REPLACE INTO "tbl_property" ("property_id", "property_no", "ward_id", "property_ownername") VALUES
-	(16,'5',37,'Athulya');
-/*!40000 ALTER TABLE "tbl_property" ENABLE KEYS;*/
-UNLOCK TABLES;
-
-
-#
-# Table structure for table 'tbl_request'
-#
-
-CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_request" (
-  "request_id" int(100) NOT NULL auto_increment,
-  "request_date" varchar(50) default NULL,
-  "user_id" int(11) default NULL,
-  "request_status" varchar(10) default '0',
-  "request_minimumamount" varchar(100) default '0',
-  "actual_amount" varchar(100) default '0',
-  PRIMARY KEY  ("request_id")
-) AUTO_INCREMENT=58;
-
-
-
-#
-# Dumping data for table 'tbl_request'
-#
-
-LOCK TABLES "tbl_request" WRITE;
-/*!40000 ALTER TABLE "tbl_request" DISABLE KEYS;*/
-REPLACE INTO "tbl_request" ("request_id", "request_date", "user_id", "request_status", "request_minimumamount", "actual_amount") VALUES
-	(55,'2024-02-01',33,'1','0','0');
-REPLACE INTO "tbl_request" ("request_id", "request_date", "user_id", "request_status", "request_minimumamount", "actual_amount") VALUES
-	(56,'2024-02-01',34,'1','0','0');
-REPLACE INTO "tbl_request" ("request_id", "request_date", "user_id", "request_status", "request_minimumamount", "actual_amount") VALUES
-	(57,'2024-02-02',35,'1','0','0');
-/*!40000 ALTER TABLE "tbl_request" ENABLE KEYS;*/
-UNLOCK TABLES;
-
-
-#
-# Table structure for table 'tbl_requesttype'
-#
-
-CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_requesttype" (
-  "requesttype_id" tinyint(4) NOT NULL auto_increment,
-  "requesttype_status" varchar(50) default '0',
-  "wastetype_id" int(10) default NULL,
-  "request_id" int(10) default NULL,
-  "requesttype_qty" varchar(100) default '0',
-  PRIMARY KEY  ("requesttype_id")
-) AUTO_INCREMENT=59;
-
-
-
-#
-# Dumping data for table 'tbl_requesttype'
-#
-
-LOCK TABLES "tbl_requesttype" WRITE;
-/*!40000 ALTER TABLE "tbl_requesttype" DISABLE KEYS;*/
-REPLACE INTO "tbl_requesttype" ("requesttype_id", "requesttype_status", "wastetype_id", "request_id", "requesttype_qty") VALUES
-	(55,'0',9,55,'0');
-REPLACE INTO "tbl_requesttype" ("requesttype_id", "requesttype_status", "wastetype_id", "request_id", "requesttype_qty") VALUES
-	(56,'0',16,55,'0');
-REPLACE INTO "tbl_requesttype" ("requesttype_id", "requesttype_status", "wastetype_id", "request_id", "requesttype_qty") VALUES
-	(57,'0',16,56,'0');
-REPLACE INTO "tbl_requesttype" ("requesttype_id", "requesttype_status", "wastetype_id", "request_id", "requesttype_qty") VALUES
-	(58,'0',9,57,'0');
-/*!40000 ALTER TABLE "tbl_requesttype" ENABLE KEYS;*/
-UNLOCK TABLES;
-
-
-#
-# Table structure for table 'tbl_transaction'
-#
-
-CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_transaction" (
-  "transaction_id" int(50) NOT NULL auto_increment,
-  "transaction_date" varchar(50) default NULL,
-  "transaction_type" varchar(100) default NULL,
-  "transaction_amount" varchar(100) default '0',
-  "user_id" int(11) unsigned default NULL,
-  PRIMARY KEY  ("transaction_id")
-);
-
-
-
-#
-# Dumping data for table 'tbl_transaction'
+# Dumping data for table 'CHARACTER_SETS'
 #
 
 # No data found.
@@ -232,103 +45,447 @@ CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_transaction" (
 
 
 #
-# Table structure for table 'tbl_user'
+# Table structure for table 'COLLATIONS'
 #
 
-CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_user" (
-  "user_name" varchar(100) NOT NULL default '',
-  "user_contact" varchar(100) NOT NULL default '',
-  "user_email" varchar(100) NOT NULL default '',
-  "user_gender" varchar(100) NOT NULL default '',
-  "user_address" varchar(100) NOT NULL default '',
-  "ward_id" int(10) NOT NULL default '0',
-  "user_photo" varchar(100) NOT NULL default '',
-  "user_propertyno" varchar(100) NOT NULL default '',
-  "user_password" varchar(100) NOT NULL default '',
-  "user_id" int(10) NOT NULL auto_increment,
-  "user_adproof" varchar(100) default NULL,
-  "user_status" varchar(50) default '0',
-  "user_wallet" varchar(100) default '0',
-  PRIMARY KEY  ("user_id")
-) AUTO_INCREMENT=39;
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `COLLATIONS` (
+  `COLLATION_NAME` varchar(64) NOT NULL default '',
+  `CHARACTER_SET_NAME` varchar(64) NOT NULL default '',
+  `ID` bigint(11) NOT NULL default '0',
+  `IS_DEFAULT` varchar(3) NOT NULL default '',
+  `IS_COMPILED` varchar(3) NOT NULL default '',
+  `SORTLEN` bigint(3) NOT NULL default '0'
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 
 
 #
-# Dumping data for table 'tbl_user'
+# Dumping data for table 'COLLATIONS'
 #
 
-LOCK TABLES "tbl_user" WRITE;
-/*!40000 ALTER TABLE "tbl_user" DISABLE KEYS;*/
-REPLACE INTO "tbl_user" ("user_name", "user_contact", "user_email", "user_gender", "user_address", "ward_id", "user_photo", "user_propertyno", "user_password", "user_id", "user_adproof", "user_status", "user_wallet") VALUES
-	('Abirami','7894561259','abirami@gmail.com','Female','perumbavoor',36,'UserPhoto_2079.png','100','Abcd@123',33,'Adproof_1143.png','2','0');
-REPLACE INTO "tbl_user" ("user_name", "user_contact", "user_email", "user_gender", "user_address", "ward_id", "user_photo", "user_propertyno", "user_password", "user_id", "user_adproof", "user_status", "user_wallet") VALUES
-	('Liya','7894561212','Ashwin@gmail.com','Female','yfgfhg',37,'UserPhoto_1454.png','22','Abcd@123',35,'Adproof_1799.png','3','0');
-REPLACE INTO "tbl_user" ("user_name", "user_contact", "user_email", "user_gender", "user_address", "ward_id", "user_photo", "user_propertyno", "user_password", "user_id", "user_adproof", "user_status", "user_wallet") VALUES
-	('Athulya','7894561212','athulya@gmail.com','Female','thottyill',37,'UserPhoto_1965.png','5','Abcd@123',36,'Adproof_1627.png','1','0');
-REPLACE INTO "tbl_user" ("user_name", "user_contact", "user_email", "user_gender", "user_address", "ward_id", "user_photo", "user_propertyno", "user_password", "user_id", "user_adproof", "user_status", "user_wallet") VALUES
-	('Baskaran','7894561212','baskaran@gmail.com','Male','yfgfhg',38,'UserPhoto_1133.png','588','Abcd@123',38,'Adproof_2022.png','0','0');
-/*!40000 ALTER TABLE "tbl_user" ENABLE KEYS;*/
-UNLOCK TABLES;
-
-
-#
-# Table structure for table 'tbl_ward'
-#
-
-CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_ward" (
-  "ward_id" int(11) NOT NULL auto_increment,
-  "ward_no" varchar(50) NOT NULL,
-  "location_id" int(11) NOT NULL,
-  PRIMARY KEY  ("ward_id")
-) AUTO_INCREMENT=39;
+# No data found.
 
 
 
 #
-# Dumping data for table 'tbl_ward'
+# Table structure for table 'COLLATION_CHARACTER_SET_APPLICABILITY'
 #
 
-LOCK TABLES "tbl_ward" WRITE;
-/*!40000 ALTER TABLE "tbl_ward" DISABLE KEYS;*/
-REPLACE INTO "tbl_ward" ("ward_id", "ward_no", "location_id") VALUES
-	(36,'1',29);
-REPLACE INTO "tbl_ward" ("ward_id", "ward_no", "location_id") VALUES
-	(37,'2',30);
-REPLACE INTO "tbl_ward" ("ward_id", "ward_no", "location_id") VALUES
-	(38,'3',31);
-/*!40000 ALTER TABLE "tbl_ward" ENABLE KEYS;*/
-UNLOCK TABLES;
-
-
-#
-# Table structure for table 'tbl_wastetype'
-#
-
-CREATE TABLE /*!32312 IF NOT EXISTS*/ "tbl_wastetype" (
-  "wastetype_id" int(10) unsigned NOT NULL auto_increment,
-  "wastetype_name" varchar(50) default NULL,
-  "wastetype_rate" varchar(50) default NULL,
-  PRIMARY KEY  ("wastetype_id")
-) AUTO_INCREMENT=19;
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `COLLATION_CHARACTER_SET_APPLICABILITY` (
+  `COLLATION_NAME` varchar(64) NOT NULL default '',
+  `CHARACTER_SET_NAME` varchar(64) NOT NULL default ''
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
 
 
 #
-# Dumping data for table 'tbl_wastetype'
+# Dumping data for table 'COLLATION_CHARACTER_SET_APPLICABILITY'
 #
 
-LOCK TABLES "tbl_wastetype" WRITE;
-/*!40000 ALTER TABLE "tbl_wastetype" DISABLE KEYS;*/
-REPLACE INTO "tbl_wastetype" ("wastetype_id", "wastetype_name", "wastetype_rate") VALUES
-	('9','paper','25');
-REPLACE INTO "tbl_wastetype" ("wastetype_id", "wastetype_name", "wastetype_rate") VALUES
-	('16','Plastic','12');
-REPLACE INTO "tbl_wastetype" ("wastetype_id", "wastetype_name", "wastetype_rate") VALUES
-	('17','rubber','50');
-REPLACE INTO "tbl_wastetype" ("wastetype_id", "wastetype_name", "wastetype_rate") VALUES
-	('18','plastic','55');
-/*!40000 ALTER TABLE "tbl_wastetype" ENABLE KEYS;*/
-UNLOCK TABLES;
+# No data found.
+
+
+
+#
+# Table structure for table 'COLUMNS'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `COLUMNS` (
+  `TABLE_CATALOG` varchar(512) default NULL,
+  `TABLE_SCHEMA` varchar(64) NOT NULL default '',
+  `TABLE_NAME` varchar(64) NOT NULL default '',
+  `COLUMN_NAME` varchar(64) NOT NULL default '',
+  `ORDINAL_POSITION` bigint(21) NOT NULL default '0',
+  `COLUMN_DEFAULT` longtext,
+  `IS_NULLABLE` varchar(3) NOT NULL default '',
+  `DATA_TYPE` varchar(64) NOT NULL default '',
+  `CHARACTER_MAXIMUM_LENGTH` bigint(21) default NULL,
+  `CHARACTER_OCTET_LENGTH` bigint(21) default NULL,
+  `NUMERIC_PRECISION` bigint(21) default NULL,
+  `NUMERIC_SCALE` bigint(21) default NULL,
+  `CHARACTER_SET_NAME` varchar(64) default NULL,
+  `COLLATION_NAME` varchar(64) default NULL,
+  `COLUMN_TYPE` longtext NOT NULL,
+  `COLUMN_KEY` varchar(3) NOT NULL default '',
+  `EXTRA` varchar(20) NOT NULL default '',
+  `PRIVILEGES` varchar(80) NOT NULL default '',
+  `COLUMN_COMMENT` varchar(255) NOT NULL default ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'COLUMNS'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'COLUMN_PRIVILEGES'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `COLUMN_PRIVILEGES` (
+  `GRANTEE` varchar(81) NOT NULL default '',
+  `TABLE_CATALOG` varchar(512) default NULL,
+  `TABLE_SCHEMA` varchar(64) NOT NULL default '',
+  `TABLE_NAME` varchar(64) NOT NULL default '',
+  `COLUMN_NAME` varchar(64) NOT NULL default '',
+  `PRIVILEGE_TYPE` varchar(64) NOT NULL default '',
+  `IS_GRANTABLE` varchar(3) NOT NULL default ''
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'COLUMN_PRIVILEGES'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'KEY_COLUMN_USAGE'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `KEY_COLUMN_USAGE` (
+  `CONSTRAINT_CATALOG` varchar(512) default NULL,
+  `CONSTRAINT_SCHEMA` varchar(64) NOT NULL default '',
+  `CONSTRAINT_NAME` varchar(64) NOT NULL default '',
+  `TABLE_CATALOG` varchar(512) default NULL,
+  `TABLE_SCHEMA` varchar(64) NOT NULL default '',
+  `TABLE_NAME` varchar(64) NOT NULL default '',
+  `COLUMN_NAME` varchar(64) NOT NULL default '',
+  `ORDINAL_POSITION` bigint(10) NOT NULL default '0',
+  `POSITION_IN_UNIQUE_CONSTRAINT` bigint(10) default NULL,
+  `REFERENCED_TABLE_SCHEMA` varchar(64) default NULL,
+  `REFERENCED_TABLE_NAME` varchar(64) default NULL,
+  `REFERENCED_COLUMN_NAME` varchar(64) default NULL
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'KEY_COLUMN_USAGE'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'PROFILING'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `PROFILING` (
+  `QUERY_ID` bigint(20) NOT NULL default '0',
+  `SEQ` bigint(20) NOT NULL default '0',
+  `STATE` varchar(30) NOT NULL default '',
+  `DURATION` varchar(9) NOT NULL default '',
+  `CPU_USER` varchar(9) default NULL,
+  `CPU_SYSTEM` varchar(9) default NULL,
+  `CONTEXT_VOLUNTARY` bigint(20) default NULL,
+  `CONTEXT_INVOLUNTARY` bigint(20) default NULL,
+  `BLOCK_OPS_IN` bigint(20) default NULL,
+  `BLOCK_OPS_OUT` bigint(20) default NULL,
+  `MESSAGES_SENT` bigint(20) default NULL,
+  `MESSAGES_RECEIVED` bigint(20) default NULL,
+  `PAGE_FAULTS_MAJOR` bigint(20) default NULL,
+  `PAGE_FAULTS_MINOR` bigint(20) default NULL,
+  `SWAPS` bigint(20) default NULL,
+  `SOURCE_FUNCTION` varchar(30) default NULL,
+  `SOURCE_FILE` varchar(20) default NULL,
+  `SOURCE_LINE` bigint(20) default NULL
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'PROFILING'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'ROUTINES'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `ROUTINES` (
+  `SPECIFIC_NAME` varchar(64) NOT NULL default '',
+  `ROUTINE_CATALOG` varchar(512) default NULL,
+  `ROUTINE_SCHEMA` varchar(64) NOT NULL default '',
+  `ROUTINE_NAME` varchar(64) NOT NULL default '',
+  `ROUTINE_TYPE` varchar(9) NOT NULL default '',
+  `DTD_IDENTIFIER` varchar(64) default NULL,
+  `ROUTINE_BODY` varchar(8) NOT NULL default '',
+  `ROUTINE_DEFINITION` longtext,
+  `EXTERNAL_NAME` varchar(64) default NULL,
+  `EXTERNAL_LANGUAGE` varchar(64) default NULL,
+  `PARAMETER_STYLE` varchar(8) NOT NULL default '',
+  `IS_DETERMINISTIC` varchar(3) NOT NULL default '',
+  `SQL_DATA_ACCESS` varchar(64) NOT NULL default '',
+  `SQL_PATH` varchar(64) default NULL,
+  `SECURITY_TYPE` varchar(7) NOT NULL default '',
+  `CREATED` datetime NOT NULL default '0000-00-00 00:00:00',
+  `LAST_ALTERED` datetime NOT NULL default '0000-00-00 00:00:00',
+  `SQL_MODE` longtext NOT NULL,
+  `ROUTINE_COMMENT` varchar(64) NOT NULL default '',
+  `DEFINER` varchar(77) NOT NULL default ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'ROUTINES'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'SCHEMATA'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `SCHEMATA` (
+  `CATALOG_NAME` varchar(512) default NULL,
+  `SCHEMA_NAME` varchar(64) NOT NULL default '',
+  `DEFAULT_CHARACTER_SET_NAME` varchar(64) NOT NULL default '',
+  `DEFAULT_COLLATION_NAME` varchar(64) NOT NULL default '',
+  `SQL_PATH` varchar(512) default NULL
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'SCHEMATA'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'SCHEMA_PRIVILEGES'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `SCHEMA_PRIVILEGES` (
+  `GRANTEE` varchar(81) NOT NULL default '',
+  `TABLE_CATALOG` varchar(512) default NULL,
+  `TABLE_SCHEMA` varchar(64) NOT NULL default '',
+  `PRIVILEGE_TYPE` varchar(64) NOT NULL default '',
+  `IS_GRANTABLE` varchar(3) NOT NULL default ''
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'SCHEMA_PRIVILEGES'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'STATISTICS'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `STATISTICS` (
+  `TABLE_CATALOG` varchar(512) default NULL,
+  `TABLE_SCHEMA` varchar(64) NOT NULL default '',
+  `TABLE_NAME` varchar(64) NOT NULL default '',
+  `NON_UNIQUE` bigint(1) NOT NULL default '0',
+  `INDEX_SCHEMA` varchar(64) NOT NULL default '',
+  `INDEX_NAME` varchar(64) NOT NULL default '',
+  `SEQ_IN_INDEX` bigint(2) NOT NULL default '0',
+  `COLUMN_NAME` varchar(64) NOT NULL default '',
+  `COLLATION` varchar(1) default NULL,
+  `CARDINALITY` bigint(21) default NULL,
+  `SUB_PART` bigint(3) default NULL,
+  `PACKED` varchar(10) default NULL,
+  `NULLABLE` varchar(3) NOT NULL default '',
+  `INDEX_TYPE` varchar(16) NOT NULL default '',
+  `COMMENT` varchar(16) default NULL
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'STATISTICS'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'TABLES'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `TABLES` (
+  `TABLE_CATALOG` varchar(512) default NULL,
+  `TABLE_SCHEMA` varchar(64) NOT NULL default '',
+  `TABLE_NAME` varchar(64) NOT NULL default '',
+  `TABLE_TYPE` varchar(64) NOT NULL default '',
+  `ENGINE` varchar(64) default NULL,
+  `VERSION` bigint(21) default NULL,
+  `ROW_FORMAT` varchar(10) default NULL,
+  `TABLE_ROWS` bigint(21) default NULL,
+  `AVG_ROW_LENGTH` bigint(21) default NULL,
+  `DATA_LENGTH` bigint(21) default NULL,
+  `MAX_DATA_LENGTH` bigint(21) default NULL,
+  `INDEX_LENGTH` bigint(21) default NULL,
+  `DATA_FREE` bigint(21) default NULL,
+  `AUTO_INCREMENT` bigint(21) default NULL,
+  `CREATE_TIME` datetime default NULL,
+  `UPDATE_TIME` datetime default NULL,
+  `CHECK_TIME` datetime default NULL,
+  `TABLE_COLLATION` varchar(64) default NULL,
+  `CHECKSUM` bigint(21) default NULL,
+  `CREATE_OPTIONS` varchar(255) default NULL,
+  `TABLE_COMMENT` varchar(80) NOT NULL default ''
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'TABLES'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'TABLE_CONSTRAINTS'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `TABLE_CONSTRAINTS` (
+  `CONSTRAINT_CATALOG` varchar(512) default NULL,
+  `CONSTRAINT_SCHEMA` varchar(64) NOT NULL default '',
+  `CONSTRAINT_NAME` varchar(64) NOT NULL default '',
+  `TABLE_SCHEMA` varchar(64) NOT NULL default '',
+  `TABLE_NAME` varchar(64) NOT NULL default '',
+  `CONSTRAINT_TYPE` varchar(64) NOT NULL default ''
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'TABLE_CONSTRAINTS'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'TABLE_PRIVILEGES'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `TABLE_PRIVILEGES` (
+  `GRANTEE` varchar(81) NOT NULL default '',
+  `TABLE_CATALOG` varchar(512) default NULL,
+  `TABLE_SCHEMA` varchar(64) NOT NULL default '',
+  `TABLE_NAME` varchar(64) NOT NULL default '',
+  `PRIVILEGE_TYPE` varchar(64) NOT NULL default '',
+  `IS_GRANTABLE` varchar(3) NOT NULL default ''
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'TABLE_PRIVILEGES'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'TRIGGERS'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `TRIGGERS` (
+  `TRIGGER_CATALOG` varchar(512) default NULL,
+  `TRIGGER_SCHEMA` varchar(64) NOT NULL default '',
+  `TRIGGER_NAME` varchar(64) NOT NULL default '',
+  `EVENT_MANIPULATION` varchar(6) NOT NULL default '',
+  `EVENT_OBJECT_CATALOG` varchar(512) default NULL,
+  `EVENT_OBJECT_SCHEMA` varchar(64) NOT NULL default '',
+  `EVENT_OBJECT_TABLE` varchar(64) NOT NULL default '',
+  `ACTION_ORDER` bigint(4) NOT NULL default '0',
+  `ACTION_CONDITION` longtext,
+  `ACTION_STATEMENT` longtext NOT NULL,
+  `ACTION_ORIENTATION` varchar(9) NOT NULL default '',
+  `ACTION_TIMING` varchar(6) NOT NULL default '',
+  `ACTION_REFERENCE_OLD_TABLE` varchar(64) default NULL,
+  `ACTION_REFERENCE_NEW_TABLE` varchar(64) default NULL,
+  `ACTION_REFERENCE_OLD_ROW` varchar(3) NOT NULL default '',
+  `ACTION_REFERENCE_NEW_ROW` varchar(3) NOT NULL default '',
+  `CREATED` datetime default NULL,
+  `SQL_MODE` longtext NOT NULL,
+  `DEFINER` longtext NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'TRIGGERS'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'USER_PRIVILEGES'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `USER_PRIVILEGES` (
+  `GRANTEE` varchar(81) NOT NULL default '',
+  `TABLE_CATALOG` varchar(512) default NULL,
+  `PRIVILEGE_TYPE` varchar(64) NOT NULL default '',
+  `IS_GRANTABLE` varchar(3) NOT NULL default ''
+) ENGINE=MEMORY DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'USER_PRIVILEGES'
+#
+
+# No data found.
+
+
+
+#
+# Table structure for table 'VIEWS'
+#
+
+CREATE TEMPORARY TABLE /*!32312 IF NOT EXISTS*/ `VIEWS` (
+  `TABLE_CATALOG` varchar(512) default NULL,
+  `TABLE_SCHEMA` varchar(64) NOT NULL default '',
+  `TABLE_NAME` varchar(64) NOT NULL default '',
+  `VIEW_DEFINITION` longtext NOT NULL,
+  `CHECK_OPTION` varchar(8) NOT NULL default '',
+  `IS_UPDATABLE` varchar(3) NOT NULL default '',
+  `DEFINER` varchar(77) NOT NULL default '',
+  `SECURITY_TYPE` varchar(7) NOT NULL default ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+
+#
+# Dumping data for table 'VIEWS'
+#
+
+# No data found.
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE;*/
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;*/

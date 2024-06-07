@@ -8,12 +8,11 @@
 <jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
 <%@page import="java.sql.ResultSet" %>
 <%
-String selqry="select*from tbl_ward where location_id ='"+request.getParameter("wid")+"'";
-ResultSet rs=con.selectCommand(selqry);
-while(rs.next())
-{
-    %>
-    <option value="<%=rs.getString("ward_id")%>"><%=rs.getString("ward_no")%> </option>
-    <%
-}
+    String selqry = "select*from tbl_ward where location_id ='" + request.getParameter("wid") + "'";
+    ResultSet rs = con.selectCommand(selqry);
+    while (rs.next()) {
+%>
+<option value="<%=rs.getString("ward_id")%>" style="color:black;"><%=rs.getString("ward_no")%> </option>
+<%
+    }
 %>

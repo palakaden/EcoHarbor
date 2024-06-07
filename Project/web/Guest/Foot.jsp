@@ -22,11 +22,11 @@
          <div class="col-lg-3 col-md-6 footer-links" style="margin-left: 100px">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#intro">Home</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#about">About us</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#services">Services</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#call-to-action">Call to action</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#facts">Facts</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="../index.html#home">Home</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href=../index.html#about">About us</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="../index.html#services">Services</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="../index.html#call-to-action">Call to action</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="../index.html#facts">Facts</a></li>
             </ul>
           </div>
 

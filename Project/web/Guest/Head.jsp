@@ -8,7 +8,7 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="../Assets/Templates/Main/img/favicon.png" rel="icon">
+  <link href="../Assets/Templates/Main/img/favicon.jpg" rel="icon">
   <link href="../Assets/Templates/Main/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -27,7 +27,6 @@
   <!-- Main Stylesheet File -->
   <link href="../Assets/Templates/Main/css/style.css" rel="stylesheet">
 
-  <link href="../Assets/Templates/Form.css" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: BizPage
@@ -53,17 +52,17 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-            <li class="menu-active"><a href="../index.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
             <li><a href="Login.jsp">Login</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="../index.html#about">About Us</a></li>
+          <li><a href="../index.html#services">Services</a></li>
           <li><a href="#contacts">Contact</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
 
-  <div id="tab" align="center">
+  <!--<div id="tab" align="center">-->
       <!--==========================
     Intro Section
   ============================-->

@@ -162,54 +162,37 @@
                     background: #5eb105;
                 }
 
+                /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
             </style>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width,initial-scale=1.0">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+ 
+
             <title>Payement Gateway</title>
         </head>
         <body>
             <div class="wrapper">
                 <h2>Payment Gateway</h2>
                 <form method="POST">
-                    <h4>Account</h4>
-                    <div class="input-group">
-                        <div class="input-box">
-                            <input class="name" type="text" name="txtname" id="txtname" placeholder="Full Name" required="required">
-                            <i class="fa fa-user icon" aria-hidden="true"></i>
-                        </div>
-                        <div class="input-box">
-                            <input class="name" type="text" name="txtnname" id="txtnname" placeholder="Nick Name" required="required">
-                            <i class="fa fa-user icon" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <div class="input-box">
-                            <input class="name" type="email" name="txtemail" id="txtemail" placeholder="Email Address" required="required">
-                            <i class="fa fa-envelope icon" aria-hidden="true"></i>
-                        </div>
-                    </div>	
-                    <div class="input-group">
-                        <div class="input-box">
-                            <input class="name" type="number" name="txt_amount" min="500" value="500" id="txtemail" placeholder="Amount" required="required">
-                            <i class="fa fa-envelope icon" aria-hidden="true"></i>
-                        </div>
-                    </div>	
-                    <div class="input-group">
-                        <div class="input-box">
-                            <h4>Date of Birth</h4>
-                            <input class="dob" type="text" data-mask="00" name="txtdate" id="txtdate" placeholder="DD">
-                            <input class="dob" type="text" data-mask="00" name="txtmonth" id="txtmonth" placeholder="MM">
-                            <input class="dob" type="text" data-mask="0000" name="txtyear" id="txtyear" placeholder="YYYY">
-                        </div>
-                        <div class="input-box">
-                            <h4>Gender</h4>
-                            <input type="radio" name="rdbgender" id="male" checked  class="radio">
-                            <label for="male">Male</label>
-                            <input type="radio" name="rdbgender" id="female" class="radio">
-                            <label for="female">Female</label>
-                        </div>
-                    </div>
+                    <h4>Amount</h4>
+<div class="input-group">
+    <div class="input-box">
+        <input class="name" type="number" name="txt_amount" min="500" value="500" id="txtemail" placeholder="Amount" required="required">
+        <i class="fa fa-rupee-sign icon" aria-hidden="true"></i>
+    </div>
+</div>	
+                
                     <div class="input-group">
                         <div class="input-box">
                             <h4>Payment Details</h4>

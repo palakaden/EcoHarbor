@@ -144,7 +144,7 @@
         <script type="text/javascript" >
             alert("Password Mismatched..");
             setTimeout(function() {
-                window.location.href = '../../Guest/AgencyRegistration.jsp'
+                window.location.href = '../../Admin/AgencyRegistration.jsp'
             }, 100);
         </script>
         <%

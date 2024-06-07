@@ -3,10 +3,103 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin Registration</title>
-    </head>
+  <head>
+    <%@include file="../Guest/Head.jsp"%>  
+    <link rel="stylesheet" href="../Assets/shopreg.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title> User Registration Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Assets/Templates/Main/img/facts-bg.jpg') no-repeat center center/cover;
+        }
+        .choose-file-button, .formbold-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .choose-file-button:hover, .formbold-btn:hover {
+            background-color: #45a049;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .formbold-form-wrapper {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(249, 249, 249, 0.1);
+    margin-top: 100px;
+    margin-bottom: 100px;
+        }
+        .gender-radio {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .gender-radio input[type="radio"] {
+            display: none;
+        }
+        .gender-radio input[type="radio"] + label {
+            background-color: #e7e7e7;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .gender-radio input[type="radio"]:checked + label {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .formbold-checkbox-wrapper input[type="checkbox"]:checked + .formbold-checkbox-inner {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        .formbold-form-title h2 {
+            font-weight: 400;
+            font-size: 33px;
+            line-height: 34px;
+            color: #fff;
+        }    
+        .formbold-form-label {
+            color: white;
+            font-size: 16px;
+            line-height: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .formbold-form-input, select, textarea {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            border-radius: 4px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        .formbold-form-input::placeholder, select option, textarea::placeholder {
+            color: white;
+        }
+        span{
+            color:white;
+        }
+    </style>
+  </head>
     <body>
         <%
             if(request.getParameter("txtsave")!=null)
@@ -19,7 +112,7 @@
                 <script type="text/javascript" >
                     alert("Upload Successfully..");
                     setTimeout(function() {
-                    window.location.href = '../Guest/Login.jsp'
+                    window.location.href = 'AdminRegistration.jsp'
                     }, 100);
                 </script>
         <%
@@ -30,46 +123,55 @@
                     <script type="text/javascript" >
                         alert("Password Mismatched..");
                         setTimeout(function() {
-                        window.location.href = 'Adminregistration.jsp'
+                        window.location.href = 'AdminRegistration.jsp'
                         }, 100);
                     </script>
                     <%
                 }    
             }
         %>
-        <form method="post">
-            <table border="3" align="center">
-                <tr>
-                    <td>Name</td>
-                    <td>
-                        <input type="text" name="txtaname" placeholder="Enter Name" title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>
-                        <input type="email" name="txtaemail" placeholder="Enter Email-Id" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td>
-                        <input type="password" name="txtpsswd" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"required> 
-                    </td>
-                </tr>
-                <tr>
-                    <td>Confirm Password</td>
-                    <td>
-                        <input type="password" name="txtcpsswd" placeholder="ReEnter Password">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">
-                        <input type="submit" name="txtsave" value="Save">
-                        <input type="reset" name="txtcancel" value="Cancel">
-                    </td>
-                </tr>
-            </table>
+    <div class="formbold-main-wrapper">
+      <div class="formbold-form-wrapper">
+        <form method="POST" enctype="multipart/form-data" action="../Assets/ActionPages/AgencyUploadAction.jsp">    
+          <div class="formbold-form-title">
+            <h2 align="center">AGENCY REGISTRATION</h2>
+          </div>  
+          <div class="formbold-mb-3">
+            <label class="formbold-form-label">Full Name</label>
+            <input type="text" class="formbold-form-input" name="txtaname" placeholder="Enter full name" title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$" required />
+          </div>
+          <div class="formbold-mb-3">
+            <label class="formbold-form-label">Email Address</label>
+            <input type="text" class="formbold-form-input" name="txtaemail" placeholder="Enter email address" required />
+          </div>
+          <div class="formbold-mb-3">
+            <input type="password" placeholder="Password" class="formbold-form-input" name="txtpsswd" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" pattern="(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}" required/>
+          </div> 
+          <div class="formbold-mb-3">
+            <input type="password" class="formbold-form-input" placeholder="Confirm Password" name="txtcpsswd" required/>
+          </div>   
+          <div class="formbold-checkbox-wrapper">
+            <label for="supportCheckbox" class="formbold-checkbox-label">
+              <div class="formbold-relative">
+                <input type="checkbox" id="supportCheckbox" class="formbold-input-checkbox"/>
+                <div class="formbold-checkbox-inner">
+                  <span class="formbold-opacity-0">
+                    <svg width="11" height="8" viewBox="0 0 11 8" fill="none" class="formbold-stroke-current">
+                      <path d="M10.0915 0.951972L10.0867 0.946075L10.0813 0.940568C9.90076 0.753564 9.61034 0.753146 9.42927 0.939309L4.16201 6.22962L1.58507 3.63469C1.40401 3.44841 1.11351 3.44879 0.932892 3.63584C0.755703 3.81933 0.755703 4.10875 0.932892 4.29224L0.932878 4.29225L0.934851 4.29424L3.58046 6.95832C3.73676 7.11955 3.94983 7.2 4.1473 7.2C4.36196 7.2 4.55963 7.11773 4.71406 6.9584L10.0468 1.60234C10.2436 1.4199 10.2421 1.1339 10.0915 0.951972ZM4.2327 6.30081L4.2317 6.2998C4.23206 6.30015 4.23237 6.30049 4.23269 6.30082L4.2327 6.30081Z" stroke-width="0.4"></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+              <span>I agree to the defined</span> <a href="#"> terms, conditions, and policies</a>
+            </label>
+          </div>   
+          <div class="button-container">   
+            <input type="submit" class="formbold-btn" name="txtsave" value="Register">
+            <input type="reset" class="formbold-btn" name="txtreset" value="Reset"> 
+          </div>
         </form>
+      </div>
+    </div>        
+      <%@include file="../Guest/Foot.jsp" %>
     </body>
-</html>
+</html
