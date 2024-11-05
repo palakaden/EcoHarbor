@@ -77,7 +77,7 @@
            //f_item=(FileItem)itr.next();
                         file_name = f_item.getName();
                         field_name = f_item.getFieldName();
-                        if (field_name.equals("txtlfile")) {
+                        if (field_name.equals("file_photo")) {
                             String ext = file_name.substring(file_name.lastIndexOf("."));
                             //setting path to store image
                             File proj_path = new File(config.getServletContext().getRealPath("/"));
@@ -96,7 +96,7 @@
                                 out.println(ex);
                             }
                         }
-                        if (field_name.equals("txtpfile")) {
+                        if (field_name.equals("file_proof")) {
                             String ext = file_name.substring(file_name.lastIndexOf("."));
                             //setting path to store image
                             File proj_path = new File(config.getServletContext().getRealPath("/"));
@@ -132,7 +132,7 @@
         <script type="text/javascript" >
             alert("Upload Successfully..");
             setTimeout(function() {
-                window.location.href = '../../Guest/Login.jsp'
+                window.location.href = '../../Admin/HomePage.jsp'
             }, 100);
         </script>
         <%

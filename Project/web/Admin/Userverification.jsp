@@ -168,7 +168,7 @@
                     <td><%=rs.getString("user_name")%></td>
                     <td><%=rs.getString("user_contact")%></td>
                     <td><%=rs.getString("user_propertyno")%></td>
-                    <td><a class="choose-file-button" href="../Assets/file/UserPhoto/<%=rs.getString("user_photo")%>"download>Download</a></td>
+                    <td><a class="choose-file-button" href="../Assets/file/Adproof/<%=rs.getString("user_adproof")%>"download>Download</a></td>
                     <td><a class="choose-file-button" href = "Userverification.jsp?aid=<%=rs.getString("user_id")%>">Accept</a><a class="choose-file-button" href = "Userverification.jsp?rid=<%=rs.getString("user_id")%>">Reject</a></td>
                     <td><%
                     if(rs.getString("user_status").equals("0"))

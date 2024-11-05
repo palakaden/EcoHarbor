@@ -3,21 +3,40 @@
     Created on : 16 May, 2024, 11:17:37 PM
     Author     : thoma
 --%>
-<%-- 
-    Document   : UserFeedbsck.jsp
-    Created on : 16 May, 2024, 10:36:32 PM
-    Author     : thoma
---%>
 <%@page import="java.sql.ResultSet"%>
 <jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="../Guest/Head.jsp"%>  
+    <head>
+        <!-- Favicons -->
+        <link href="../Assets/Templates/Main/img/favicon.jpg" rel="icon">
+        <link href="../Assets/Templates/Main/img/apple-touch-icon.jpg" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+        <!-- Bootstrap CSS File -->
+        <link href="../Assets/Templates/Main/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link href="../Assets/Templates/Main/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="../Assets/Templates/Main/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="../Assets/Templates/Main/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+        <link href="../Assets/Templates/Main/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="../Assets/Templates/Main/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        <!-- Main Stylesheet File -->
+        <link href="../Assets/Templates/Main/css/style.css" rel="stylesheet">
+
+        <link href="../Assets/Templates/Form.css" rel="stylesheet">
         <link rel="stylesheet" href="../Assets/shopreg.css">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>User Complaint</title>
+
         <style>
             body {
                 margin: 0;
@@ -106,22 +125,40 @@
                 color:white;
             }
             .formbold-main-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 48px;
-    margin-bottom: 345px;
-}
-.formbold-form-wrapper {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: rgba(249, 249, 249, 0.1);
-    margin-top: 217px;
-        </style>
-    </head>
-    <body>
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 48px;
+                margin-bottom: 345px;
+            }
+            .formbold-form-wrapper {
+                max-width: 600px;
+                margin: auto;
+                padding: 20px;
+                border-radius: 5px;
+                background-color: rgba(249, 249, 249, 0.1);
+                margin-top: 217px;
+            </style>
+        </head>
+        <body>
+            <header id="header" >
+                <div class="container-fluid">
+
+                    <div id="logo" class="pull-left">
+                        <h1><a href="../index.html" class="scrollto">EcoHarbor</a></h1>
+                        <!-- Uncomment below if you prefer to use an image logo -->
+                        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+                    </div>
+
+                    <nav id="nav-menu-container">
+                        <ul class="nav-menu">
+                            <li class="menu-active"><a href="HomePage.jsp">Home</a></li>
+                            <li><a href="#contacts">Contact</a></li>
+                            <li><a href="../index.html">Logout</a></li>
+                        </ul>
+                    </nav><!-- #nav-menu-container -->
+                </div>
+            </header><!-- #header -->
           <div class="formbold-main-wrapper">
             <div class="formbold-form-wrapper">
          <%

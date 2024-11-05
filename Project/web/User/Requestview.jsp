@@ -153,19 +153,15 @@ h2 {
                     }
                     if(rs.getString("request_status").equals("1"))
                     {
-                        out.println("Request is Accepted");
+                        out.println("Request is Rejected");
                     }
                     if(rs.getString("request_status").equals("2"))
                     {
-                        out.println("Request is Rejected");
+                        out.println("Collection Pending");
                     }
                     if(rs.getString("request_status").equals("3"))
                     {
                         out.println("Collection Completed");
-                    }
-                    if(rs.getString("request_status").equals("4"))
-                    {
-                        out.println("Collection Pending");
                     }
                     %>   
                     </td>

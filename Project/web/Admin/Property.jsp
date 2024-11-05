@@ -217,7 +217,7 @@ Header
                         <li><a style="color:white;">Entry Options</a>
                             <ul>
                                 <li><a href="Location.jsp">Location Entry</a></li>
-                                <li><a href="WasteType.jsp">Waste Type Entry</a></li>
+                                <li><a href="Wastetype.jsp">Waste Type Entry</a></li>
                                 <li><a href="Ward.jsp">Ward Entry</a></li>
                             </ul>
                         </li>

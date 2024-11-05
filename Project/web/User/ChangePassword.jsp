@@ -161,7 +161,7 @@
                 %>
                     <script>
                         alert("New password Mismatched");
-                        window.location="Change Password.jsp";
+                        window.location="ChangePassword.jsp";
                     </script>
                 <%
             }
@@ -171,7 +171,7 @@
             %>
             <script>
                 alert("Current Password Mismatched");
-                window.location="Change Password.jsp";
+                window.location="ChangePassword.jsp";
             </script>
             <%
         }

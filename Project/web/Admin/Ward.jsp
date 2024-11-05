@@ -1,10 +1,8 @@
 <%-- 
     Document   : Ward
-    Created on : 27 Oct, 2023, 10:15:49 PM
-    Author     : thoma
+    Created on : Oct 27, 2023, 7:30:03 PM
+    Author     : frank
 --%>
-
-
 <jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
 <%@page  import = "java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,7 +29,7 @@
         <!-- Main Stylesheet File -->
         <link href="../Assets/Templates/Main/css/style.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="../Assets/shopreg.css">
+        <link rel="stylesheet" href="../Assets/CSS/shopreg.css">
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -64,12 +62,15 @@
                 margin-top: 20px;
             }
             .formbold-form-wrapper {
-                max-width: 600px;
-                margin: auto;
-                padding: 20px;
-                border-radius: 5px;
-                background-color: rgba(249, 249, 249, 0.1);
-                margin-top:-16px;
+                    max-width: 780px;
+                    margin: auto;
+                    padding: 20px;
+                    border-radius: 5px;
+                    background-color: rgba(249, 249, 249, 0.1);
+                    margin-top: 100px;
+                    margin-bottom: 100px;
+                    width: 780px;
+
             }
             .gender-radio {
                 display: inline-block;
@@ -136,7 +137,7 @@
                 flex-direction: column;
                 align-items: center;
                 margin-top: 100px;
-                margin-bottom: 125px;
+                    margin-bottom: 330px;
             }
 
             table {
@@ -175,7 +176,7 @@
                 line-height: 34px;
 
             }
-            .choose-file-button {
+                        .choose-file-button {
                 background-color: transparent;
                 color: white;
                 border: 2px solid white;
@@ -198,7 +199,7 @@
         </style>
     </head>
     <body>
-        <!--==========================
+<!--==========================
 Header
 ============================-->
         <header id="header" >
@@ -212,10 +213,10 @@ Header
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
                         <li><a href="HomePage.jsp">Home</a></li>
-                        <li><a href="">Entry Options</a>
+                        <li><a style="color:white;">Entry Options</a>
                             <ul>
                                 <li><a href="Location.jsp">Location Entry</a></li>
-                                <li><a href="Wastetype.jsp">Waste Type Entry</a></li>
+                                <li><a href="WasteType.jsp">Waste Type Entry</a></li>
                                 <li><a href="Property.jsp">Property Entry</a></li>
                             </ul>
                         </li>
@@ -224,51 +225,55 @@ Header
                 </nav><!-- #nav-menu-container -->
             </div>
         </header><!-- #######################################header############################################ -->
-
-
         <%
-            if (request.getParameter("btn_reset") != null)
+            if(request.getParameter("txtreset")!=null)
             {
                 response.sendRedirect("Ward.jsp");
-            }
-            if (request.getParameter("btn_save") != null) {
-                if (request.getParameter("txtid").equals("")) {
-                    String iq = "insert into tbl_ward(location_id,ward_no)values('" + request.getParameter("ddlWard") + "','" + request.getParameter("txtwardno") + "')";
+            }            
+            if(request.getParameter("txtsave")!=null)
+            {
+                if(request.getParameter("txtid").equals(""))
+                {
+                    String iq = "insert into tbl_ward(location_id,ward_no)values('"+request.getParameter("ddlWard")+"','"+request.getParameter("txtwardno")+"')";
                     con.executeCommand(iq);
-                } else {
-                    String uq = "update tbl_ward set location_id = '" + request.getParameter("ddlWard") + "',ward_no = '" + request.getParameter("txtwardno") + "'where ward_id = '" + request.getParameter("txtid") + "'";
-                    con.executeCommand(uq);
-                    response.sendRedirect("Ward.jsp");
                 }
+                else 
+                {
+                    String uq = "update tbl_ward set location_id = '"+request.getParameter("ddlWard")+"',ward_no = '"+request.getParameter("txtwardno")+"'where ward_id = '"+request.getParameter("txtid")+"'";
+                    con.executeCommand(uq);
+                    response.sendRedirect("Ward.jsp");                    
+                }   
             }
-            if (request.getParameter("did") != null) {
-                String dq = "delete from tbl_ward where ward_id = '" + request.getParameter("did") + "'";
+            if(request.getParameter("did")!=null)
+            {
+                String dq = "delete from tbl_ward where ward_id = '"+request.getParameter("did")+"'";
                 con.executeCommand(dq);
                 response.sendRedirect("Ward.jsp");
             }
-            String editlid = "";
-            String editid = "";
-            String editwno = "";
-            if (request.getParameter("eid") != null) {
-                String sq2 = "select*from tbl_ward where ward_id ='" + request.getParameter("eid") + "'";
+            String editlid="";
+            String editid="";
+            String editwno="";
+            if(request.getParameter("eid")!=null)
+            {
+                String sq2 = "select*from tbl_ward where ward_id ='"+request.getParameter("eid")+"'";
                 ResultSet rs2 = con.selectCommand(sq2);
                 rs2.next();
                 editlid = rs2.getString("location_id");
                 editid = rs2.getString("ward_id");
                 editwno = rs2.getString("ward_no");
             }
-
+            
         %>
         <div class="formbold-main-wrapper">
             <div class="formbold-form-wrapper">
-
                 <form method="post">    
                     <div class="formbold-form-title">
                         <h2 align="center">WARD ENTRY</h2>
                     </div> 
-
-                    <select name="ddlWard" class="formbold-form-input" required>
-                        <option value="" style="color:black;">--select location--</option>
+                    <label class="formbold-form-label">Location Name</label>                    
+                    <div class="formbold-input-flex">    
+                    <select name="ddlWard" class="formbold-form-input">
+                        <option style="color:black;">Select Location</option>
                         <%                        String sq = "select*from tbl_location";
                             ResultSet rs = con.selectCommand(sq);
                             while (rs.next()) {
@@ -280,19 +285,19 @@ Header
                             }
                         %>
                     </select>
-
+                    </div>
+                    <label class="formbold-form-label">Ward Number</label>
                     <div class="formbold-mb-3">
-                        <input type="text" name="txtwardno" class="formbold-form-input" placeholder="Enter Ward No" value="<%=editwno%>"required>
+                        <input type="text" name="txtwardno" class="formbold-form-input" placeholder="Enter Ward No" value="<%=editwno%>">
                         <input type="hidden" name = "txtid" value="<%=editid%>">
                     </div>
 
                     <div class="button-container">   
-                        <input type="submit" class="formbold-btn" name="btn_save" value="Register">
-                        <input type="submit" class="formbold-btn" name="btn_reset" value="Reset"> 
+                        <input type="submit" class="formbold-btn" name="txtsave" value="Register">
+                        <input type="submit" class="formbold-btn" name="txtreset" value="Reset"> 
                     </div>
                 </form>  
             </div>
-
         </div>
         <div class="table-container">
             <table border="1" align="center">  
@@ -313,15 +318,13 @@ Header
                     <td><%=i%></td>
                     <td><%=rs1.getString("location_name")%></td>
                     <td><%=rs1.getString("ward_no")%></td>
-                    <td><a class="choose-file-button" href = "Ward.jsp?did=<%=rs1.getString("ward_id")%>">Delete</a>|<a class="choose-file-button" href = "Ward.jsp?eid=<%=rs1.getString("ward_id")%>">Edit</a></td>
+                    <td><a class="choose-file-button" href = "Ward.jsp?did=<%=rs1.getString("ward_id")%>">Delete</a><a class="choose-file-button" href = "Ward.jsp?eid=<%=rs1.getString("ward_id")%>">Edit</a></td>
                 </tr>   
                 <%
                     }
                 %>
             </table>    
         </div>
-
-
         <%@include file="../Guest/Foot.jsp" %>
     </body>
 </html>

@@ -3,11 +3,7 @@
     Created on : 26 Oct, 2023, 3:41:00 PM
     Author     : thoma
 --%>
-<%-- 
-    Document   : Wastetype
-    Created on : Oct 26, 2023, 12:39:52 PM
-    Author     : frank
---%>
+
 <jsp:useBean class="DB.ConnectionClass" id="con"></jsp:useBean>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -225,7 +221,7 @@ Header
                                 <li><a href="Ward.jsp">Ward Entry</a></li>
                             </ul>
                         </li>
-                        <li><a href="../Guest/Login1.jsp">Logout</a></li>
+                        <li><a href="../Guest/Login.jsp">Logout</a></li>
                     </ul>
                 </nav><!-- #nav-menu-container -->
             </div>
@@ -282,7 +278,7 @@ Header
                     </div>
                     <div class="button-container">
                         <input type="submit" class="formbold-btn" name="txtsave" value="Save">
-                        <input type="reset"  class="formbold-btn" name="txtcancel" value="cancel">
+                        <input type="submit"  class="formbold-btn" name="txtcancel" value="cancel">
                     </div>
         </form> 
         </div>        

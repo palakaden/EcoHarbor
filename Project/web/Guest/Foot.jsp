@@ -23,10 +23,10 @@
             <h4>Useful Links</h4>
             <ul>
               <li><i class="ion-ios-arrow-right"></i> <a href="../index.html#home">Home</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href=../index.html#about">About us</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="../index.html#about">About us</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="../index.html#services">Services</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="../index.html#call-to-action">Call to action</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="../index.html#facts">Facts</a></li>
+           
             </ul>
           </div>
 

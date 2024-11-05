@@ -240,7 +240,7 @@
                     <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
                         <div class="icon"><i class="fas fa-calendar-alt"></i></div>
                         <h4 class="title"><a href="">Collection Schedule</a></h4>
-                        <p class="description">Waste is collected according to a regular schedule, with specific days allocated for different types of waste to ensure systematic and efficient management</p>
+                        <p class="description">Waste is collected on a set schedule during the first week of each month. Please place waste in front of your house for pickup</p>
                     </div>
                     <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
                         <div class="icon"><i class="fas fa-seedling"></i></div>
