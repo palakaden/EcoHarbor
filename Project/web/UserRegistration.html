@@ -1,99 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>User Registration Form - EcoHarbor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <!-- Favicons (same as login page if you use them) -->
-    <link href="../Assets/Templates/Main/img/favicon.jpg" rel="icon">
-    <link href="../Assets/Templates/Main/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
-
-    <!-- Bootstrap CSS File -->
-    <link href="../Assets/Templates/Main/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Libraries CSS Files -->
-    <link href="../Assets/Templates/Main/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../Assets/Templates/Main/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="../Assets/Templates/Main/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="../Assets/Templates/Main/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="../Assets/Templates/Main/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
-    <!-- Main Stylesheet File -->
-    <link href="../Assets/Templates/Main/css/style.css" rel="stylesheet">
-
-    <!-- Your custom registration CSS -->
-    <link rel="stylesheet" href="../Assets/shopreg.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        url('../Assets/Templates/Main/img/facts-bg.jpg') no-repeat center center/cover;
-        }
-        .choose-file-button, .formbold-btn {
-            background-color: #4CAF50;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
             color: white;
-            border: none;
-            padding: 10px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 20px auto;
+        }
+        
+        .header {
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
+            margin-bottom: 30px;
         }
-        .choose-file-button:hover, .formbold-btn:hover {
-            background-color: #45a049;
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #4CAF50;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
+        
         .formbold-form-wrapper {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 5px;
-            background-color: rgba(249, 249, 249, 0.1);
-            margin-top: 100px;
+            background-color: rgba(30, 30, 30, 0.85);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
         }
-        .gender-radio {
-            display: inline-block;
-            margin-right: 10px;
+        
+        .formbold-form-title {
+            text-align: center;
+            margin-bottom: 30px;
         }
-        .gender-radio input[type="radio"] {
-            display: none;
-        }
-        .gender-radio input[type="radio"] + label {
-            background-color: #e7e7e7;
-            color: black;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .gender-radio input[type="radio"]:checked + label {
-            background-color: #4CAF50;
-            color: white;
-        }
-        .formbold-checkbox-wrapper input[type="checkbox"]:checked + .formbold-checkbox-inner {
-            background-color: #4CAF50;
-            border-color: #4CAF50;
-        }
+        
         .formbold-form-title h2 {
             font-weight: 400;
             font-size: 33px;
             line-height: 34px;
             color: #fff;
+            margin: 0;
         }
+        
+        .formbold-mb-3 {
+            margin-bottom: 20px;
+        }
+        
         .formbold-form-label {
             color: white;
             font-size: 16px;
@@ -101,58 +74,35 @@
             display: block;
             margin-bottom: 10px;
         }
+        
         .formbold-form-input, select, textarea {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
-            border: 1px solid white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 4px;
-            padding: 10px;
+            padding: 12px 15px;
             width: 100%;
             box-sizing: border-box;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
+            font-size: 16px;
+            transition: all 0.3s;
         }
+        
+        .formbold-form-input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+        }
+        
         .formbold-form-input::placeholder, select option, textarea::placeholder {
-            color: white;
+            color: rgba(255, 255, 255, 0.7);
         }
-        span {
-            color: white;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .modal-btn {
+        
+        .choose-file-button, .formbold-btn {
             background-color: #4CAF50;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -161,107 +111,236 @@
             cursor: pointer;
             border-radius: 4px;
             transition: background-color 0.3s ease;
+            font-weight: 500;
         }
-        .modal-btn:hover {
+        
+        .choose-file-button:hover, .formbold-btn:hover {
             background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-
-        /* Optional: simple top header like login page */
-        #header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 999;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px 0;
+        
+        .formbold-btn-reset {
+            background-color: #f44336;
         }
-        #logo h1 a {
-            color: #fff;
-            text-decoration: none;
+        
+        .formbold-btn-reset:hover {
+            background-color: #d32f2f;
         }
-        #nav-menu-container {
-            float: right;
+        
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
         }
-        .nav-menu {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+        
+        .formbold-input-flex {
+            display: flex;
+            gap: 15px;
         }
-        .nav-menu li {
+        
+        .formbold-input-flex > div {
+            flex: 1;
+        }
+        
+        .gender-radio {
             display: inline-block;
-            margin-left: 20px;
+            margin-right: 15px;
         }
-        .nav-menu li a {
-            color: #fff;
+        
+        .gender-radio input[type="radio"] {
+            display: none;
+        }
+        
+        .gender-radio input[type="radio"] + label {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .gender-radio input[type="radio"]:checked + label {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+        
+        .formbold-checkbox-wrapper {
+            margin-top: 25px;
+        }
+        
+        .formbold-checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+        }
+        
+        .formbold-input-checkbox {
+            display: none;
+        }
+        
+        .formbold-checkbox-inner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 3px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .formbold-input-checkbox:checked + .formbold-checkbox-inner {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        
+        .formbold-input-checkbox:checked + .formbold-checkbox-inner:after {
+            content: "✓";
+            color: white;
+            font-size: 14px;
+        }
+        
+        .formbold-checkbox-label a {
+            color: #4CAF50;
             text-decoration: none;
+            margin-left: 5px;
+        }
+        
+        .formbold-checkbox-label a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+        }
+        
+        .modal-content {
+            background-color: #2d2d2d;
+            margin: 10% auto;
+            padding: 25px;
+            border: 1px solid #444;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: white;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .modal-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .modal-btn-agree {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .modal-btn-cancel {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .file-info {
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .formbold-input-flex {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .formbold-form-wrapper {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Simple header/navigation -->
-    <header id="header">
-        <div class="container-fluid">
-            <div id="logo" class="pull-left">
-                <h1><a href="../index.html" class="scrollto">EcoHarbor</a></h1>
-            </div>
-
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="../index.html#about">About Us</a></li>
-                    <li><a href="../index.html#services">Services</a></li>
-                    <li><a href="../index.html#contacts">Contact</a></li>
-                </ul>
-            </nav>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-user-plus"></i> EcoHarbor</h1>
+            <p>Join our community and help create a sustainable future</p>
         </div>
-    </header>
-
-    <div class="formbold-main-wrapper">
+        
         <div class="formbold-form-wrapper">
-            <!-- Static demo form: no real JSP backend here -->
-            <form id="userRegForm" method="POST">
+            <form id="registrationForm" method="POST" enctype="multipart/form-data">
                 <div class="formbold-form-title">
-                    <h2 align="center">USER REGISTRATION</h2>
+                    <h2>USER REGISTRATION</h2>
                 </div>
-
+                
                 <div class="formbold-mb-3">
                     <label class="formbold-form-label">Full Name</label>
-                    <input type="text"
-                           class="formbold-form-input"
-                           name="txtname"
-                           placeholder="Enter full name"
-                           title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter"
-                           pattern="^[A-Z]+[a-zA-Z ]*$"
-                           required />
+                    <input type="text" class="formbold-form-input" name="txtname" placeholder="Enter full name" 
+                           title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" 
+                           pattern="^[A-Z]+[a-zA-Z ]*$" required />
                 </div>
-
+                
                 <div class="formbold-mb-3">
                     <label class="formbold-form-label">Phone Number</label>
-                    <input type="text"
-                           class="formbold-form-input"
-                           placeholder="Enter phone number"
-                           name="txtcontact"
-                           title="Phone number with 7-9 and remaining 9 digits with 0-9"
-                           pattern="[7-9]{1}[0-9]{9}"
-                           required />
+                    <input type="text" class="formbold-form-input" placeholder="Enter phone number" name="txtcontact" 
+                           title="Phone number with 7-9 and remaining 9 digits with 0-9"  
+                           pattern="[7-9]{1}[0-9]{9}" required />
                 </div>
-
+                
                 <div class="formbold-mb-3">
                     <label class="formbold-form-label">Email Address</label>
-                    <input type="text"
-                           class="formbold-form-input"
-                           name="txtemail"
-                           placeholder="Enter email address"
-                           required />
+                    <input type="email" class="formbold-form-input" name="txtemail" placeholder="Enter email address" required />
                 </div>
-
+                
                 <div class="formbold-mb-3">
                     <label class="formbold-form-label">Gender</label>
                     <div class="gender-radio">
-                        <input type="radio" id="male" name="gender" value="Male" />
+                        <input type="radio" id="male" name="gender" value="Male" required />
                         <label for="male">Male</label>
                     </div>
                     <div class="gender-radio">
@@ -273,217 +352,227 @@
                         <label for="others">Others</label>
                     </div>
                 </div>
-
-                <div class="column">
+                
+                <div class="formbold-input-flex">
                     <div class="formbold-mb-3">
                         <label for="file1" class="formbold-form-label">Profile Photo</label>
-                        <input type="file"
-                               id="file1"
-                               name="file_photo"
-                               style="display: none;"
-                               onchange="displayFileName('file1', 'file1-label')"
-                               required>
-                        <button type="button"
-                                class="choose-file-button"
-                                onclick="document.getElementById('file1').click()">
-                            Choose File
+                        <input type="file" id="file1" name="file_photo" style="display: none;" 
+                               accept="image/*" required onchange="displayFileName('file1', 'file1-label')">
+                        <button type="button" class="choose-file-button" onclick="document.getElementById('file1').click()">
+                            <i class="fas fa-camera"></i> Choose File
                         </button>
-                        <span id="file1-label">No file chosen</span>
+                        <span id="file1-label" class="file-info">No file chosen</span>
                     </div>
-
+                    
                     <div class="formbold-mb-3">
                         <label for="file2" class="formbold-form-label">Aadhaar Proof</label>
-                        <input type="file"
-                               id="file2"
-                               name="file_proof"
-                               style="display: none;"
-                               onchange="displayFileName('file2', 'file2-label')"
-                               required>
-                        <button type="button"
-                                class="choose-file-button"
-                                onclick="document.getElementById('file2').click()">
-                            Choose File
+                        <input type="file" id="file2" name="file_proof" style="display: none;" 
+                               accept=".pdf,.jpg,.jpeg,.png" required onchange="displayFileName('file2', 'file2-label')">
+                        <button type="button" class="choose-file-button" onclick="document.getElementById('file2').click()">
+                            <i class="fas fa-file-upload"></i> Choose File
                         </button>
-                        <span id="file2-label">No file chosen</span>
+                        <span id="file2-label" class="file-info">No file chosen</span>
                     </div>
                 </div>
-
+                
                 <div class="formbold-mb-3">
-                    <label class="formbold-form-label"></label>
-                    <input type="number"
-                           class="formbold-form-input"
-                           placeholder="Enter Property No"
-                           name="txtpropno"
-                           required />
+                    <label class="formbold-form-label">Property Number</label>
+                    <input type="number" class="formbold-form-input" placeholder="Enter Property No" name="txtpropno" required />
                 </div>
-
+                
                 <div class="formbold-input-flex">
                     <div>
-                        <!-- Static sample locations instead of DB-driven tbl_location -->
-                        <select name="ddlLoc"
-                                class="formbold-form-input"
-                                onchange="getWard(this.value)"
-                                required>
+                        <label class="formbold-form-label">Location</label>
+                        <select name="ddlLoc" class="formbold-form-input" id="locationSelect" required>
                             <option value="" hidden>Select Location</option>
-                            <option value="1" style="color:black;">Location 1</option>
-                            <option value="2" style="color:black;">Location 2</option>
-                            <option value="3" style="color:black;">Location 3</option>
+                            <option value="1" style="color:black;">Downtown</option>
+                            <option value="2" style="color:black;">Uptown</option>
+                            <option value="3" style="color:black;">Eastside</option>
+                            <option value="4" style="color:black;">Westside</option>
+                            <option value="5" style="color:black;">North Hills</option>
+                            <option value="6" style="color:black;">South Park</option>
                         </select>
                     </div>
+                    
                     <div>
-                        <select name="ddlWard"
-                                id="selward"
-                                class="formbold-form-input"
-                                required>
-                            <option hidden>Ward No</option>
+                        <label class="formbold-form-label">Ward No</label>
+                        <select name="ddlWard" id="selward" class="formbold-form-input" required>
+                            <option value="" hidden>Select Ward</option>
                         </select>
                     </div>
                 </div>
-
+                
                 <div class="formbold-mb-3">
-                    <textarea name="address"
-                              placeholder="Enter street address"
-                              class="formbold-form-input"
-                              required></textarea>
+                    <label class="formbold-form-label">Street Address</label>
+                    <textarea name="address" placeholder="Enter street address" class="formbold-form-input" rows="3" required></textarea>
                 </div>
-
+                
                 <div class="formbold-mb-3">
-                    <input type="password"
-                           placeholder="Password"
-                           class="formbold-form-input"
-                           name="txtpsswd"
-                           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                           required />
+                    <label class="formbold-form-label">Password</label>
+                    <input type="password" placeholder="Password" class="formbold-form-input" name="txtpsswd" 
+                           title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" 
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required/>
                 </div>
-
+                
                 <div class="formbold-mb-3">
-                    <input type="password"
-                           class="formbold-form-input"
-                           placeholder="Confirm Password"
-                           name="txtcpsswd"
-                           required />
+                    <label class="formbold-form-label">Confirm Password</label>
+                    <input type="password" class="formbold-form-input" placeholder="Confirm Password" name="txtcpsswd" required/>
                 </div>
-
+                
                 <div class="formbold-checkbox-wrapper">
                     <label for="supportCheckbox" class="formbold-checkbox-label">
-                        <div class="formbold-relative">
-                            <input type="checkbox"
-                                   id="supportCheckbox"
-                                   class="formbold-input-checkbox"
-                                   required>
-                            <div class="formbold-checkbox-inner">
-                                <span class="formbold-opacity-0">
-                                    <!-- just decorative -->
-                                </span>
-                            </div>
-                        </div>
-                        <span>I agree to the defined</span>
-                        <a href="#" id="terms-link"> terms, conditions, and policies</a>
+                        <input type="checkbox" id="supportCheckbox" class="formbold-input-checkbox" required>
+                        <div class="formbold-checkbox-inner"></div>
+                        I agree to the defined <a href="#" id="terms-link">terms, conditions, and policies</a>
                     </label>
                 </div>
-
+                
                 <div class="button-container">
-                    <input type="submit"
-                           class="formbold-btn"
-                           name="btn_save"
-                           value="Register">
-                    <input type="reset"
-                           class="formbold-btn"
-                           name="btn_reset"
-                           value="Reset">
-                </div>
-
-                <!-- Terms & Conditions Modal -->
-                <div id="termsModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>Terms and Conditions</h2>
-                        <p>
-                            Welcome to EcoHarbor! By accessing or using our services, you agree to be bound by the terms and conditions set forth below.
-                        </p>
-                        <p>
-                            These terms and conditions govern your use of our website, including all content, features, and functionality.
-                        </p>
-                        <p>
-                            You agree to use our website and services in a lawful manner and for their intended purposes only.
-                        </p>
-                        <p>
-                            All content on our website is the property of EcoHarbor and is protected by applicable copyright and trademark laws.
-                        </p>
-                        <p>
-                            We do not guarantee the accuracy, completeness, or reliability of any information provided on our website.
-                        </p>
-                        <p>
-                            If you have any questions about these terms and conditions, please contact us at support@ecoharbor.com.
-                        </p>
-                    </div>
+                    <button type="submit" class="formbold-btn" name="btn_save">
+                        <i class="fas fa-user-plus"></i> Register
+                    </button>
+                    <button type="reset" class="formbold-btn formbold-btn-reset" name="btn_reset">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
                 </div>
             </form>
         </div>
+        
+        <div class="footer">
+            <p>&copy; 2023 EcoHarbor. All rights reserved. | Creating a Sustainable Future Together</p>
+        </div>
+    </div>
+    
+    <!-- Terms and Conditions Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-file-contract"></i> Terms and Conditions</h2>
+            <p>
+                Welcome to EcoHarbor! By accessing or using our services, you agree to be bound by the terms and conditions set forth below. Please read them carefully. If you do not agree to these terms and conditions, you may not use our services.
+            </p>
+            <p>
+                These terms and conditions govern your use of our website, including all content, features, and functionality available through our site. We reserve the right to make changes to these terms and conditions at any time. Your continued use of our services following the posting of changes will mean that you accept and agree to the changes.
+            </p>
+            <p>
+                You agree to use our website and services in a lawful manner and for their intended purposes only. You must not use our services for any fraudulent or illegal activities, including but not limited to spamming, hacking, or distributing malware.
+            </p>
+            <p>
+                All content on our website, including text, graphics, logos, and images, is the property of EcoHarbor and is protected by applicable copyright and trademark laws. You may not reproduce, distribute, or use any content from our website without our prior written consent.
+            </p>
+            <p>
+                We do not guarantee the accuracy, completeness, or reliability of any information provided on our website. Your use of the information provided on our website is at your own risk. We are not liable for any damages or losses resulting from your use of our website or services.
+            </p>
+            <p>
+                If you have any questions about these terms and conditions, please contact us at support@ecoharbor.com.
+            </p>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-cancel" id="cancel-btn">Cancel</button>
+                <button class="modal-btn modal-btn-agree" id="agree-btn">I Agree</button>
+            </div>
+        </div>
     </div>
 
-    <!-- jQuery (you can keep your local file or use CDN) -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
     <script>
-        // Static version of getWard: just fills some demo ward numbers
-        function getWard(locId) {
+        // Ward data for different locations
+        const wardData = {
+            1: ["Ward 1A", "Ward 1B", "Ward 1C"],
+            2: ["Ward 2A", "Ward 2B", "Ward 2C", "Ward 2D"],
+            3: ["Ward 3A", "Ward 3B"],
+            4: ["Ward 4A", "Ward 4B", "Ward 4C", "Ward 4D", "Ward 4E"],
+            5: ["Ward 5A", "Ward 5B", "Ward 5C"],
+            6: ["Ward 6A", "Ward 6B"]
+        };
+        
+        // Function to populate wards based on selected location
+        function getWard(locationId) {
             const wardSelect = document.getElementById("selward");
-            wardSelect.innerHTML = "";
-
-            if (!locId) {
-                wardSelect.innerHTML = '<option hidden>Ward No</option>';
-                return;
+            wardSelect.innerHTML = '<option value="" hidden>Select Ward</option>';
+            
+            if (locationId && wardData[locationId]) {
+                wardData[locationId].forEach(ward => {
+                    const option = document.createElement("option");
+                    option.value = ward;
+                    option.textContent = ward;
+                    option.style.color = "black";
+                    wardSelect.appendChild(option);
+                });
             }
-
-            // sample data only
-            const wards = ["Ward 1", "Ward 2", "Ward 3", "Ward 4"];
-            wards.forEach(function (w) {
-                const opt = document.createElement("option");
-                opt.textContent = w;
-                opt.value = w;
-                wardSelect.appendChild(opt);
-            });
         }
-
+        
+        // Function to display selected file names
         function displayFileName(inputId, labelId) {
-            var input = document.getElementById(inputId);
-            var label = document.getElementById(labelId);
+            const input = document.getElementById(inputId);
+            const label = document.getElementById(labelId);
             if (input.files.length > 0) {
                 label.textContent = input.files[0].name;
             } else {
                 label.textContent = "No file chosen";
             }
         }
-
-        // Terms & conditions modal
-        $(document).ready(function () {
-            var modal = $("#termsModal");
-            var btn = $("#terms-link");
-            var span = $(".close");
-
-            btn.click(function (event) {
+        
+        // Form validation
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            const password = document.getElementsByName("txtpsswd")[0].value;
+            const confirmPassword = document.getElementsByName("txtcpsswd")[0].value;
+            const termsCheckbox = document.getElementById("supportCheckbox");
+            
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
                 event.preventDefault();
-                modal.show();
+                return;
+            }
+            
+            if (!termsCheckbox.checked) {
+                alert("You must agree to the terms and conditions!");
+                event.preventDefault();
+                return;
+            }
+            
+            // In a real application, you would submit the form to a server
+            // For this demo, we'll just show a success message
+            alert("Registration successful! In a real application, this data would be sent to a server.");
+            event.preventDefault();
+        });
+        
+        // Terms and Conditions Modal
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("termsModal");
+            const termsLink = document.getElementById("terms-link");
+            const closeBtn = document.getElementsByClassName("close")[0];
+            const agreeBtn = document.getElementById("agree-btn");
+            const cancelBtn = document.getElementById("cancel-btn");
+            const checkbox = document.getElementById("supportCheckbox");
+            
+            termsLink.addEventListener("click", function(event) {
+                event.preventDefault();
+                modal.style.display = "block";
             });
-
-            span.click(function () {
-                modal.hide();
+            
+            closeBtn.addEventListener("click", function() {
+                modal.style.display = "none";
             });
-
-            $(window).click(function (event) {
-                if (event.target == modal[0]) {
-                    modal.hide();
+            
+            agreeBtn.addEventListener("click", function() {
+                checkbox.checked = true;
+                modal.style.display = "none";
+            });
+            
+            cancelBtn.addEventListener("click", function() {
+                checkbox.checked = false;
+                modal.style.display = "none";
+            });
+            
+            window.addEventListener("click", function(event) {
+                if (event.target === modal) {
+                    modal.style.display = "none";
                 }
             });
-        });
-
-        // Static demo submit handler (no JSP backend)
-        const userRegForm = document.getElementById("userRegForm");
-        userRegForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            alert("This is a static demo on Netlify.\nReal registration (database/JSP) is not available here.");
+            
+            // Initialize location change event
+            document.getElementById("locationSelect").addEventListener("change", function() {
+                getWard(this.value);
+            });
         });
     </script>
 </body>
