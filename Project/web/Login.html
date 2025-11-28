@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>EcoHarbor</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="../Assets/Templates/Main/img/favicon.jpg" rel="icon">
+    <link href="../Assets/Templates/Main/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="../Assets/Templates/Main/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="../Assets/Templates/Main/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../Assets/Templates/Main/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../Assets/Templates/Main/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="../Assets/Templates/Main/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../Assets/Templates/Main/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="../Assets/Templates/Main/css/style.css" rel="stylesheet">
+
+    <!-- Extra form CSS -->
+    <link rel="stylesheet" type="text/css" href="Assets/Form.css">
+
+    <style>
+        .login-box {
+            position: relative;
+            width: 400px;
+        }
+        .login-box form {
+            width: 100%;
+            padding: 0 50px;
+        }
+        .input-box {
+            position: relative;
+            margin: 9px 0;
+        }
+        .input-box input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: 2px solid #00b605;
+            outline: none;
+            border-radius: 40px;
+            font-size: 1em;
+            color: white;
+            padding: 0 20px;
+            transition: .5s ease;
+        }
+        .input-box input:focus,
+        .input-box input:valid {
+            border-color: white;
+        }
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            font-size: 1em;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s ease;
+        }
+        .input-box input:focus ~ label,
+        .input-box input:valid ~ label {
+            top: 1px;
+            font-size: 15px;
+            padding: 0 6px;
+            color: white;
+        }
+        .input-box-submit {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: 2px solid #00b605;
+            outline: none;
+            border-radius: 28px;
+            font-size: 1em;
+            color: white;
+            padding: 10px 20px;
+            transition: border-color 0.3s ease;
+        }
+        .input-box-submit:hover,
+        .input-box-submit:focus {
+            border-color: white;
+        }
+        button, input, optgroup, select, textarea {
+            margin: 8px;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--==========================
+      Header
+    ============================-->
+    <header id="header">
+        <div class="container-fluid">
+            <div id="logo" class="pull-left">
+                <h1><a href="../index.html" class="scrollto">EcoHarbor</a></h1>
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <!-- point this to your static signup.html -->
+                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="../index.html#about">About Us</a></li>
+                    <li><a href../index.html#services">Services</a></li>
+                    <li><a href="#contacts">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="tab" align="center">
+        <!--==========================
+          Intro Section
+        ============================-->
+        <section id="intro">
+            <div class="intro-container">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active" style="background-image: url('../Assets/Templates/Main/img/intro-carousel/11.jpg');">
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+
+                                <div class="login-box">
+                                    <h2 style="color: black; margin-bottom: 7px; font-size: 60px; font-weight: 700;">Login</h2>
+
+                                    <!-- Static demo form: no real backend -->
+                                    <form id="loginForm">
+                                        <div class="input-box">
+                                            <input type="email" name="txtmail" required>
+                                            <label>Email</label>
+                                        </div>
+                                        <div class="input-box">
+                                            <input type="password"
+                                                   name="password"
+                                                   required
+                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                                   title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                                            <label>Password</label>
+                                        </div>
+
+                                        <input type="submit"
+                                               value="Login"
+                                               class="input-box-submit">
+
+                                        <div>
+                                            <label style="color: white; font-size: 15px;">
+                                                Not a member?
+                                                <!-- also update this to your static signup.html -->
+                                                <a href="signup.html" style="color: limegreen;">Sign up</a>
+                                            </label>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Simple JS just to show a message on submit (demo only) -->
+    <script>
+        const form = document.getElementById('loginForm');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('This is a static demo on Netlify. Real login (database/JSP) is not available here.');
+        });
+    </script>
+
+</body>
+</html>
