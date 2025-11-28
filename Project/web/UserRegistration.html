@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="../Assets/shopreg.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>User Registration Form</title>
+    <title> User Registration Form</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Assets/Templates/Main/img/facts-bg.jpg') no-repeat center center/cover;
         }
         .choose-file-button, .formbold-btn {
             background-color: #4CAF50;
@@ -146,7 +147,7 @@
   <body>
     <div class="formbold-main-wrapper">
       <div class="formbold-form-wrapper">
-        <form method="POST" enctype="multipart/form-data" id="registrationForm">    
+        <form method="POST" enctype="multipart/form-data" action="../Assets/ActionPages/UserUploadAction.jsp">    
           <div class="formbold-form-title">
             <h2 align="center">USER REGISTRATION</h2>
           </div>  
@@ -199,12 +200,7 @@
             <div>
               <select name="ddlLoc" class="formbold-form-input" onchange="getWard(this.value)" required>
                 <option value="" hidden required>Select Location</option>
-                <option style="color:black;" value="1">Downtown</option>
-                <option style="color:black;" value="2">Uptown</option>
-                <option style="color:black;" value="3">Eastside</option>
-                <option style="color:black;" value="4">Westside</option>
-                <option style="color:black;" value="5">North Hills</option>
-                <option style="color:black;" value="6">South Park</option>
+                <!-- Location options will be dynamically populated -->
               </select>
             </div>   
             <div>
@@ -268,30 +264,15 @@
                 </form>
             </div>
         </div>
+        <script src="../Assets/JQuery/jQuery.js"></script>
         <script>
-            // Ward data for different locations
-            const wardData = {
-                1: ["Ward 1A", "Ward 1B", "Ward 1C"],
-                2: ["Ward 2A", "Ward 2B", "Ward 2C", "Ward 2D"],
-                3: ["Ward 3A", "Ward 3B"],
-                4: ["Ward 4A", "Ward 4B", "Ward 4C", "Ward 4D", "Ward 4E"],
-                5: ["Ward 5A", "Ward 5B", "Ward 5C"],
-                6: ["Ward 6A", "Ward 6B"]
-            };
-            
             function getWard(wid) {
-                const wardSelect = document.getElementById("selward");
-                wardSelect.innerHTML = '<option hidden>Ward No</option>';
-                
-                if (wid && wardData[wid]) {
-                    wardData[wid].forEach(ward => {
-                        const option = document.createElement("option");
-                        option.value = ward;
-                        option.textContent = ward;
-                        option.style.color = "black";
-                        wardSelect.appendChild(option);
-                    });
-                }
+                $.ajax({
+                    url: "../Assets/AjaxPages/AjaxWard.jsp?wid=" + wid,
+                    success: function(result) {
+                        $("#selward").html(result);
+                    }
+                })
             }
             
             function displayFileName(inputId, labelId) {
@@ -304,44 +285,37 @@
                 }
             }
             
-            document.addEventListener("DOMContentLoaded", function() {
-                var modal = document.getElementById("termsModal");
-                var btn = document.getElementById("terms-link");
-                var span = document.getElementsByClassName("close")[0];
-                var agreeBtn = document.getElementById("agree-btn");
-                var cancelBtn = document.getElementById("cancel-btn");
-                var checkbox = document.getElementById("supportCheckbox");
+            $(document).ready(function() {
+                var modal = $("#termsModal");
+                var btn = $("#terms-link");
+                var span = $(".close");
+                var agreeBtn = $("#agree-btn");
+                var cancelBtn = $("#cancel-btn");
+                var checkbox = $("#supportCheckbox");
 
-                btn.addEventListener("click", function(event) {
+                btn.click(function(event) {
                     event.preventDefault();
-                    modal.style.display = "block";
+                    modal.show();
                 });
 
-                span.addEventListener("click", function() {
-                    modal.style.display = "none";
+                span.click(function() {
+                    modal.hide();
                 });
 
-                window.addEventListener("click", function(event) {
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
+                agreeBtn.click(function() {
+                    checkbox.prop("checked", true);
+                    modal.hide();
                 });
-                
-                // Form validation
-                document.getElementById("registrationForm").addEventListener("submit", function(event) {
-                    const password = document.getElementsByName("txtpsswd")[0].value;
-                    const confirmPassword = document.getElementsByName("txtcpsswd")[0].value;
-                    
-                    if (password !== confirmPassword) {
-                        alert("Passwords do not match!");
-                        event.preventDefault();
-                        return;
+
+                cancelBtn.click(function() {
+                    checkbox.prop("checked", false);
+                    modal.hide();
+                });
+
+                $(window).click(function(event) {
+                    if (event.target == modal[0]) {
+                        modal.hide();
                     }
-                    
-                    // In a real application, you would submit the form to a server
-                    // For this demo, we'll just show a success message
-                    alert("Registration successful! In a real application, this data would be sent to a server.");
-                    event.preventDefault();
                 });
             });
         </script>
